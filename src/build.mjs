@@ -129,7 +129,6 @@ const phero = ({ crumb, kicker, h1, lead, image, alt, pos }) => `<section class=
 </section>`;
 
 const lhero = ({ crumb, h1, lead, extra = '' }) => `<section class="lhero">
-  ${ribbon('ribbon-deco')}
   <div class="wrap">
     <nav class="crumbs" aria-label="Навигация"><a href="index.html">Главная</a><span>/</span><span>${crumb}</span></nav>
     <h1>${h1}</h1>
@@ -160,13 +159,21 @@ const mapSpots = [
 ];
 
 const mapGraphic = interactive => `<svg class="tmap-svg" viewBox="0 0 1200 680" role="img" aria-label="Схема территории спортивного комплекса Курганово">
-  <defs><pattern id="trees" width="54" height="54" patternUnits="userSpaceOnUse"><circle cx="14" cy="18" r="11" fill="#8da58b"/><circle cx="31" cy="34" r="15" fill="#718d70"/><circle cx="46" cy="13" r="9" fill="#a8b99a"/></pattern></defs>
-  <rect width="1200" height="680" rx="28" fill="#dfe6d6"/><path d="M0 0H180L130 680H0Z" fill="#b9d4cf"/><path d="M0 50H175M0 95H166M0 140H158" stroke="#fff" stroke-opacity=".58" stroke-width="3"/>
-  <path d="M120 680C150 555 295 470 390 410S520 300 555 0" fill="none" stroke="#c8c8bd" stroke-width="86"/><path d="M145 680C180 565 305 505 420 450S590 365 730 365H1200" fill="none" stroke="#c8c8bd" stroke-width="64"/><path d="M120 680C150 555 295 470 390 410S520 300 555 0" fill="none" stroke="#f7f5ee" stroke-width="4" stroke-dasharray="16 18"/>
-  <path d="M20 185L190 205 170 580 20 620ZM760 15L1180 20 1170 190 820 165Z" fill="url(#trees)" opacity=".9"/>
-  <g class="map-buildings"><path d="M500 135L770 150 805 340 510 330Z"/><path d="M300 105L450 128 425 270 290 240Z"/><path d="M860 300L1045 340 1020 420 845 390Z"/><path d="M785 115L940 135 915 315 790 290Z"/></g>
-  <g class="map-fields"><rect x="960" y="175" width="185" height="96" rx="10"/><rect x="1010" y="290" width="128" height="62" rx="8"/><rect x="860" y="410" width="142" height="68" rx="8"/></g>
-  <g class="map-small"><rect x="150" y="135" width="90" height="56" rx="8"/><rect x="145" y="225" width="82" height="55" rx="8"/><rect x="230" y="265" width="92" height="56" rx="8"/><rect x="178" y="372" width="126" height="66" rx="8"/>${[0,1,2,3].map(i => `<path d="M${565+i*82} ${520+i*18}l28-18 28 18v38h-56z"/>`).join('')}</g>
+  <defs><pattern id="trees" width="48" height="48" patternUnits="userSpaceOnUse"><circle cx="12" cy="16" r="10" fill="#8da58b"/><circle cx="29" cy="32" r="14" fill="#718d70"/><circle cx="43" cy="11" r="8" fill="#a8b99a"/></pattern><pattern id="parking" width="22" height="22" patternUnits="userSpaceOnUse" patternTransform="rotate(22)"><path d="M0 2h22" stroke="#fff" stroke-width="3" opacity=".75"/></pattern></defs>
+  <rect width="1200" height="680" rx="28" fill="#dfe6d6"/>
+  <path d="M0 0H155L138 680H0Z" fill="#b9d4cf"/><path d="M0 58H152M0 105H148M0 152H145" stroke="#fff" stroke-opacity=".6" stroke-width="3"/>
+  <path d="M25 180L205 190 170 650 25 660ZM770 10L1180 14 1175 192 825 165ZM985 500L1200 470V680H1030Z" fill="url(#trees)" opacity=".92"/>
+  <g class="map-roads"><path d="M155 680C165 555 258 470 380 415C455 380 475 330 500 245L540 0"/><path d="M335 420C485 395 565 367 700 365H1200"/><path d="M420 286C585 315 725 340 860 357"/></g>
+  <path class="map-parking" d="M300 295L466 319 438 397 270 374Z" fill="url(#parking)"/>
+  <g class="map-buildings">
+    <path d="M492 92L638 105 622 294 468 282Z"/><path d="M642 104L788 122 802 306 623 294Z"/><path class="admin" d="M570 292L754 305Q778 309 790 336L794 363 552 337Q556 307 570 292Z"/>
+    <path d="M304 91L425 111 410 161 455 169 432 271 289 244Z"/>
+    <path d="M805 126L934 151 916 321 798 298Z"/>
+    <path d="M871 308L1014 337 996 430 851 401Z"/>
+    <text x="550" y="190">АРЕНА</text><text x="686" y="208">АРЕНА</text><text x="340" y="210">ЕВРОПА</text><text x="836" y="255">СПОРТ</text><text x="895" y="385">АЗИЯ</text>
+  </g>
+  <g class="map-fields"><rect x="954" y="170" width="191" height="108" rx="10"/><rect x="1010" y="290" width="130" height="65" rx="8"/><rect x="864" y="430" width="145" height="72" rx="8"/><path d="M990 185v78M969 224h160M1024 185v78M1075 185v78M1110 185v78"/></g>
+  <g class="map-small"><path d="M164 115l52 10 24 36-18 45-70-14-16-39z"/><rect x="145" y="224" width="82" height="55" rx="8"/><path d="M238 266l92 14-11 62-91-14z"/><path d="M176 367l128 18-11 69-127-18z"/>${[0,1,2,3].map(i => `<path d="M${565+i*82} ${520+i*18}l28-18 28 18v38h-56z"/>`).join('')}</g>
   ${mapSpots.map((s, i) => `<g class="map-pin${i === 0 ? ' active' : ''}" data-map-pin data-n="${s.n}" data-cat="${s.cat}" data-title="${esc(s.title)}" data-text="${esc(s.text)}" transform="translate(${s.x} ${s.y})"${interactive ? ` role="button" tabindex="0" aria-label="${s.n}. ${esc(s.title)}"` : ''}><circle r="24"/><text y="1">${s.n}</text></g>`).join('')}
 </svg>`;
 

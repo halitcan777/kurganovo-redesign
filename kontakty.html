@@ -15,7 +15,7 @@
 <meta name="theme-color" content="#176b5b">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="preload" href="assets/fonts/onest-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/site.css?v=mtzmggtf">
+<link rel="stylesheet" href="assets/site.css?v=mtzmmnhc">
 <script>document.documentElement.classList.add('js');if(/[?&]still/.test(location.search))document.documentElement.classList.add('still')</script>
 </head>
 <body>
@@ -32,7 +32,6 @@
 </header>
 <main>
 <section class="lhero">
-  <svg class="ribbon ribbon-deco" viewBox="0 0 120 120" aria-hidden="true"><path d="M12 120A108 108 0 0 1 120 12" style="stroke:var(--rb1)"/><path d="M27 120A93 93 0 0 1 120 27" style="stroke:var(--rb2)"/><path d="M42 120A78 78 0 0 1 120 42" style="stroke:var(--rb3)"/><path d="M57 120A63 63 0 0 1 120 57" style="stroke:var(--rb4)"/><path d="M72 120A48 48 0 0 1 120 72" style="stroke:var(--rb5)"/></svg>
   <div class="wrap">
     <nav class="crumbs" aria-label="Навигация"><a href="index.html">Главная</a><span>/</span><span>Контакты</span></nav>
     <h1>Как добраться и куда звонить</h1>
@@ -66,13 +65,21 @@
   <div class="wrap">
     <div class="sec-head rv"><h2>21 объект на одной территории</h2><p>Новая схема показывает, где находятся корпуса, спортивные зоны, бани, беседки и пляж.</p></div>
     <a class="map-preview rv" href="territoriya.html"><svg class="tmap-svg" viewBox="0 0 1200 680" role="img" aria-label="Схема территории спортивного комплекса Курганово">
-  <defs><pattern id="trees" width="54" height="54" patternUnits="userSpaceOnUse"><circle cx="14" cy="18" r="11" fill="#8da58b"/><circle cx="31" cy="34" r="15" fill="#718d70"/><circle cx="46" cy="13" r="9" fill="#a8b99a"/></pattern></defs>
-  <rect width="1200" height="680" rx="28" fill="#dfe6d6"/><path d="M0 0H180L130 680H0Z" fill="#b9d4cf"/><path d="M0 50H175M0 95H166M0 140H158" stroke="#fff" stroke-opacity=".58" stroke-width="3"/>
-  <path d="M120 680C150 555 295 470 390 410S520 300 555 0" fill="none" stroke="#c8c8bd" stroke-width="86"/><path d="M145 680C180 565 305 505 420 450S590 365 730 365H1200" fill="none" stroke="#c8c8bd" stroke-width="64"/><path d="M120 680C150 555 295 470 390 410S520 300 555 0" fill="none" stroke="#f7f5ee" stroke-width="4" stroke-dasharray="16 18"/>
-  <path d="M20 185L190 205 170 580 20 620ZM760 15L1180 20 1170 190 820 165Z" fill="url(#trees)" opacity=".9"/>
-  <g class="map-buildings"><path d="M500 135L770 150 805 340 510 330Z"/><path d="M300 105L450 128 425 270 290 240Z"/><path d="M860 300L1045 340 1020 420 845 390Z"/><path d="M785 115L940 135 915 315 790 290Z"/></g>
-  <g class="map-fields"><rect x="960" y="175" width="185" height="96" rx="10"/><rect x="1010" y="290" width="128" height="62" rx="8"/><rect x="860" y="410" width="142" height="68" rx="8"/></g>
-  <g class="map-small"><rect x="150" y="135" width="90" height="56" rx="8"/><rect x="145" y="225" width="82" height="55" rx="8"/><rect x="230" y="265" width="92" height="56" rx="8"/><rect x="178" y="372" width="126" height="66" rx="8"/><path d="M565 520l28-18 28 18v38h-56z"/><path d="M647 538l28-18 28 18v38h-56z"/><path d="M729 556l28-18 28 18v38h-56z"/><path d="M811 574l28-18 28 18v38h-56z"/></g>
+  <defs><pattern id="trees" width="48" height="48" patternUnits="userSpaceOnUse"><circle cx="12" cy="16" r="10" fill="#8da58b"/><circle cx="29" cy="32" r="14" fill="#718d70"/><circle cx="43" cy="11" r="8" fill="#a8b99a"/></pattern><pattern id="parking" width="22" height="22" patternUnits="userSpaceOnUse" patternTransform="rotate(22)"><path d="M0 2h22" stroke="#fff" stroke-width="3" opacity=".75"/></pattern></defs>
+  <rect width="1200" height="680" rx="28" fill="#dfe6d6"/>
+  <path d="M0 0H155L138 680H0Z" fill="#b9d4cf"/><path d="M0 58H152M0 105H148M0 152H145" stroke="#fff" stroke-opacity=".6" stroke-width="3"/>
+  <path d="M25 180L205 190 170 650 25 660ZM770 10L1180 14 1175 192 825 165ZM985 500L1200 470V680H1030Z" fill="url(#trees)" opacity=".92"/>
+  <g class="map-roads"><path d="M155 680C165 555 258 470 380 415C455 380 475 330 500 245L540 0"/><path d="M335 420C485 395 565 367 700 365H1200"/><path d="M420 286C585 315 725 340 860 357"/></g>
+  <path class="map-parking" d="M300 295L466 319 438 397 270 374Z" fill="url(#parking)"/>
+  <g class="map-buildings">
+    <path d="M492 92L638 105 622 294 468 282Z"/><path d="M642 104L788 122 802 306 623 294Z"/><path class="admin" d="M570 292L754 305Q778 309 790 336L794 363 552 337Q556 307 570 292Z"/>
+    <path d="M304 91L425 111 410 161 455 169 432 271 289 244Z"/>
+    <path d="M805 126L934 151 916 321 798 298Z"/>
+    <path d="M871 308L1014 337 996 430 851 401Z"/>
+    <text x="550" y="190">АРЕНА</text><text x="686" y="208">АРЕНА</text><text x="340" y="210">ЕВРОПА</text><text x="836" y="255">СПОРТ</text><text x="895" y="385">АЗИЯ</text>
+  </g>
+  <g class="map-fields"><rect x="954" y="170" width="191" height="108" rx="10"/><rect x="1010" y="290" width="130" height="65" rx="8"/><rect x="864" y="430" width="145" height="72" rx="8"/><path d="M990 185v78M969 224h160M1024 185v78M1075 185v78M1110 185v78"/></g>
+  <g class="map-small"><path d="M164 115l52 10 24 36-18 45-70-14-16-39z"/><rect x="145" y="224" width="82" height="55" rx="8"/><path d="M238 266l92 14-11 62-91-14z"/><path d="M176 367l128 18-11 69-127-18z"/><path d="M565 520l28-18 28 18v38h-56z"/><path d="M647 538l28-18 28 18v38h-56z"/><path d="M729 556l28-18 28 18v38h-56z"/><path d="M811 574l28-18 28 18v38h-56z"/></g>
   <g class="map-pin active" data-map-pin data-n="1" data-cat="stay sport" data-title="Главный корпус" data-text="Ресепшн, ледовые арены, зал игровых видов спорта, спортбар, гостиница, детская комната, прокат." transform="translate(650 230)"><circle r="24"/><text y="1">1</text></g><g class="map-pin" data-map-pin data-n="2" data-cat="stay" data-title="Корпус «Европа»" data-text="Гостиница, зал фитнеса и бильярд." transform="translate(370 170)"><circle r="24"/><text y="1">2</text></g><g class="map-pin" data-map-pin data-n="3" data-cat="stay event" data-title="Корпус «Азия»" data-text="Гостиница, столовая и конференц-залы." transform="translate(930 315)"><circle r="24"/><text y="1">3</text></g><g class="map-pin" data-map-pin data-n="4" data-cat="service" data-title="Въезд" data-text="Охраняемый въезд на территорию." transform="translate(225 520)"><circle r="24"/><text y="1">4</text></g><g class="map-pin" data-map-pin data-n="5" data-cat="service" data-title="Парковка" data-text="Парковка для легковых автомобилей и автобусов." transform="translate(390 355)"><circle r="24"/><text y="1">5</text></g><g class="map-pin" data-map-pin data-n="6" data-cat="food event" data-title="Гриль-бар «Овертайм»" data-text="Гриль-меню, столики и банкетное обслуживание." transform="translate(195 260)"><circle r="24"/><text y="1">6</text></g><g class="map-pin" data-map-pin data-n="7" data-cat="stay" data-title="Коттеджи" data-text="Два бревенчатых коттеджа для компаний." transform="translate(215 165)"><circle r="24"/><text y="1">7</text></g><g class="map-pin" data-map-pin data-n="8" data-cat="event" data-title="Большая беседка" data-text="Крытая беседка с мебелью и светом." transform="translate(280 300)"><circle r="24"/><text y="1">8</text></g><g class="map-pin" data-map-pin data-n="9" data-cat="sport spa" data-title="Спортивная зона" data-text="Бассейн, тренажёрный зал, единоборства, хоккейный тир, велокласс и SPA." transform="translate(845 210)"><circle r="24"/><text y="1">9</text></g><g class="map-pin" data-map-pin data-n="10" data-cat="sport" data-title="Футбольное поле" data-text="Открытое поле с искусственным покрытием." transform="translate(930 245)"><circle r="24"/><text y="1">10</text></g><g class="map-pin" data-map-pin data-n="11" data-cat="sport" data-title="Волейбольная площадка" data-text="Открытая площадка 18 × 9 м." transform="translate(1050 300)"><circle r="24"/><text y="1">11</text></g><g class="map-pin" data-map-pin data-n="12" data-cat="sport" data-title="Пейнтбол и лазертаг" data-text="Лесная игровая зона." transform="translate(875 82)"><circle r="24"/><text y="1">12</text></g><g class="map-pin" data-map-pin data-n="13" data-cat="event" data-title="Шатёр" data-text="Площадка для мероприятий с мебелью и бетонным полом." transform="translate(675 420)"><circle r="24"/><text y="1">13</text></g><g class="map-pin" data-map-pin data-n="14" data-cat="family" data-title="Детский городок" data-text="Уличная игровая площадка." transform="translate(770 455)"><circle r="24"/><text y="1">14</text></g><g class="map-pin" data-map-pin data-n="15" data-cat="sport" data-title="Стритбол" data-text="Открытая площадка для игры в стритбол." transform="translate(920 455)"><circle r="24"/><text y="1">15</text></g><g class="map-pin" data-map-pin data-n="16" data-cat="event" data-title="Беседка №2" data-text="Беседка у воды с мангалом и светом." transform="translate(600 540)"><circle r="24"/><text y="1">16</text></g><g class="map-pin" data-map-pin data-n="17" data-cat="event" data-title="Беседка №3" data-text="Беседка у воды с мангалом и светом." transform="translate(682 558)"><circle r="24"/><text y="1">17</text></g><g class="map-pin" data-map-pin data-n="18" data-cat="event" data-title="Беседка №4" data-text="Беседка у воды с мангалом и светом." transform="translate(764 576)"><circle r="24"/><text y="1">18</text></g><g class="map-pin" data-map-pin data-n="19" data-cat="event" data-title="Беседка №5" data-text="Беседка у воды с мангалом и светом." transform="translate(846 594)"><circle r="24"/><text y="1">19</text></g><g class="map-pin" data-map-pin data-n="20" data-cat="spa stay" data-title="Бани" data-text="Три бани с парными и зонами отдыха." transform="translate(235 405)"><circle r="24"/><text y="1">20</text></g><g class="map-pin" data-map-pin data-n="21" data-cat="family" data-title="Пляж" data-text="Береговая зона у водохранилища." transform="translate(85 120)"><circle r="24"/><text y="1">21</text></g>
 </svg><span class="btn btn-accent">Открыть интерактивную карту</span></a>
   </div>
@@ -135,6 +142,6 @@
   </div>
 </footer>
 <div class="toast" role="status" aria-live="polite"></div>
-<script src="assets/app.js?v=mtzmggtf" defer></script>
+<script src="assets/app.js?v=mtzmmnhc" defer></script>
 </body>
 </html>
