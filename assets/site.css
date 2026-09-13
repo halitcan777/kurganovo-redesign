@@ -199,9 +199,32 @@ h3{font-size:22px;line-height:1.2;font-weight:600}
 .collage .c2{grid-column:4/8;grid-row:3/7;box-shadow:0 0 0 8px #fff}
 
 /* план */
-.plan{align-items:start}
-.plan-img{background:#fff}
-.plan-img img{object-fit:contain}
+.map-preview{position:relative;display:block;padding:14px;border:1px solid var(--line);border-radius:20px;background:#fff;box-shadow:0 20px 60px rgba(16,41,37,.08)}
+.map-preview .btn{position:absolute;right:36px;bottom:36px;box-shadow:0 12px 32px rgba(16,41,37,.2)}
+.tmap-svg{display:block;width:100%;height:auto;font-family:var(--f-body)}
+.map-buildings path{fill:#fbfaf5;stroke:#334c46;stroke-width:5;filter:drop-shadow(0 10px 6px rgba(16,41,37,.14))}
+.map-fields rect{fill:#96b388;stroke:#496a55;stroke-width:4}
+.map-small rect,.map-small path{fill:#cfb68d;stroke:#715f48;stroke-width:3}
+.map-pin{cursor:pointer;transition:opacity .2s ease,transform .2s ease}
+.map-pin circle{fill:#fff;stroke:#173d35;stroke-width:4;filter:drop-shadow(0 4px 5px rgba(16,41,37,.22));transition:fill .2s ease,stroke .2s ease}
+.map-pin text{fill:#173d35;font-size:18px;font-weight:750;text-anchor:middle;dominant-baseline:middle;pointer-events:none}
+.map-pin:hover circle,.map-pin:focus circle,.map-pin.active circle{fill:var(--rb5);stroke:var(--navy)}
+.map-pin.dim{opacity:.16;pointer-events:none}
+.map-page{padding-top:48px}
+.map-filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+.tmap-layout{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:24px;align-items:stretch}
+.tmap-canvas{overflow:hidden;padding:12px;border:1px solid var(--line);border-radius:20px;background:#fff;box-shadow:0 20px 60px rgba(16,41,37,.08)}
+.map-detail{position:relative;display:flex;flex-direction:column;min-height:100%;padding:34px;border-radius:20px;background:var(--navy);color:#fff;overflow:hidden}
+.map-detail-num{position:absolute;right:20px;top:-22px;color:rgba(255,255,255,.08);font:800 140px/1 var(--f-head)}
+.map-detail .kicker{position:relative;color:var(--rb5)}
+.map-detail h2{position:relative;margin-top:28px;font-size:36px}
+.map-detail>p:not(.kicker){position:relative;margin-top:18px;color:var(--ink-inv)}
+.map-detail .link{position:relative;margin-top:auto;padding-top:32px;color:var(--rb5)}
+.map-index{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-top:24px}
+.map-index button{display:flex;align-items:center;gap:12px;padding:12px;border:1px solid var(--line);border-radius:10px;background:#fff;text-align:left;transition:border-color .2s ease,background .2s ease}
+.map-index button:hover,.map-index button.active{border-color:var(--brand);background:var(--brand-tint)}
+.map-index b{display:grid;place-items:center;flex:0 0 32px;height:32px;border-radius:50%;background:var(--navy);color:#fff}
+.map-index span{font-size:13px;line-height:1.25}
 .legend{display:grid;grid-template-columns:1fr 1fr;gap:28px var(--gut)}
 .legend h3{font-size:18px;margin-bottom:10px}
 .legend li{display:flex;gap:10px;align-items:flex-start;padding-block:5px;font-size:14.5px;line-height:1.4;color:var(--ink2)}
@@ -406,6 +429,8 @@ h3{font-size:22px;line-height:1.2;font-weight:600}
   .collage{aspect-ratio:7/5.6}
   .ftr-top{grid-template-columns:1fr}.ftr-call{justify-self:start;text-align:left}
   .ftr-main{grid-template-columns:1fr 1fr}
+  .tmap-layout{grid-template-columns:1fr}.map-detail{min-height:300px}
+  .map-index{grid-template-columns:repeat(3,minmax(0,1fr))}
 }
 @media(max-width:680px){
   .wrap{padding-inline:16px}
@@ -455,6 +480,9 @@ h3{font-size:22px;line-height:1.2;font-weight:600}
   .rate-num{font-size:104px}
   .collage{grid-template-columns:1fr;grid-template-rows:none;aspect-ratio:auto;gap:16px}
   .collage .c1,.collage .c2{grid-column:auto;grid-row:auto;aspect-ratio:4/3;box-shadow:none}
+  .map-preview{padding:6px;border-radius:12px}.map-preview .btn{position:static;width:100%;margin-top:8px;white-space:normal;text-align:center}
+  .tmap-canvas{margin-inline:-16px;padding:4px;border-radius:0;border-inline:0;overflow-x:auto}.tmap-svg{min-width:760px}
+  .map-index{grid-template-columns:1fr 1fr}.map-index button{padding:9px}.map-index span{font-size:12px}
   .ftr-main{grid-template-columns:1fr;gap:34px}
   .ftr-bot{grid-template-columns:1fr}.ftr-bot span:last-child{text-align:left}
 }

@@ -22,6 +22,7 @@ export const nav = [
   { href: 'sport.html', label: 'Спорт' },
   { href: 'meropriyatiya.html', label: 'Мероприятия' },
   { href: 'bassein.html', label: 'Бассейн и SPA' },
+  { href: 'territoriya.html', label: 'Территория' },
   { href: 'ceny.html', label: 'Цены' },
   { href: 'kontakty.html', label: 'Контакты' },
 ];

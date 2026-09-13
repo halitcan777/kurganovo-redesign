@@ -138,15 +138,51 @@ const lhero = ({ crumb, h1, lead, extra = '' }) => `<section class="lhero">
   </div>
 </section>`;
 
+const mapSpots = [
+  { n: 1, cat: 'stay sport', title: 'Главный корпус', text: 'Ресепшн, ледовые арены, зал игровых видов спорта, спортбар, гостиница, детская комната, прокат.', x: 650, y: 230 },
+  { n: 2, cat: 'stay', title: 'Корпус «Европа»', text: 'Гостиница, зал фитнеса и бильярд.', x: 370, y: 170 },
+  { n: 3, cat: 'stay event', title: 'Корпус «Азия»', text: 'Гостиница, столовая и конференц-залы.', x: 930, y: 315 },
+  { n: 4, cat: 'service', title: 'Въезд', text: 'Охраняемый въезд на территорию.', x: 225, y: 520 },
+  { n: 5, cat: 'service', title: 'Парковка', text: 'Парковка для легковых автомобилей и автобусов.', x: 390, y: 355 },
+  { n: 6, cat: 'food event', title: 'Гриль-бар «Овертайм»', text: 'Гриль-меню, столики и банкетное обслуживание.', x: 195, y: 260 },
+  { n: 7, cat: 'stay', title: 'Коттеджи', text: 'Два бревенчатых коттеджа для компаний.', x: 215, y: 165 },
+  { n: 8, cat: 'event', title: 'Большая беседка', text: 'Крытая беседка с мебелью и светом.', x: 280, y: 300 },
+  { n: 9, cat: 'sport spa', title: 'Спортивная зона', text: 'Бассейн, тренажёрный зал, единоборства, хоккейный тир, велокласс и SPA.', x: 845, y: 210 },
+  { n: 10, cat: 'sport', title: 'Футбольное поле', text: 'Открытое поле с искусственным покрытием.', x: 930, y: 245 },
+  { n: 11, cat: 'sport', title: 'Волейбольная площадка', text: 'Открытая площадка 18 × 9 м.', x: 1050, y: 300 },
+  { n: 12, cat: 'sport', title: 'Пейнтбол и лазертаг', text: 'Лесная игровая зона.', x: 875, y: 82 },
+  { n: 13, cat: 'event', title: 'Шатёр', text: 'Площадка для мероприятий с мебелью и бетонным полом.', x: 675, y: 420 },
+  { n: 14, cat: 'family', title: 'Детский городок', text: 'Уличная игровая площадка.', x: 770, y: 455 },
+  { n: 15, cat: 'sport', title: 'Стритбол', text: 'Открытая площадка для игры в стритбол.', x: 920, y: 455 },
+  ...[16,17,18,19].map((n, i) => ({ n, cat: 'event', title: `Беседка №${i + 2}`, text: 'Беседка у воды с мангалом и светом.', x: 600 + i * 82, y: 540 + i * 18 })),
+  { n: 20, cat: 'spa stay', title: 'Бани', text: 'Три бани с парными и зонами отдыха.', x: 235, y: 405 },
+  { n: 21, cat: 'family', title: 'Пляж', text: 'Береговая зона у водохранилища.', x: 85, y: 120 },
+];
+
+const mapGraphic = interactive => `<svg class="tmap-svg" viewBox="0 0 1200 680" role="img" aria-label="Схема территории спортивного комплекса Курганово">
+  <defs><pattern id="trees" width="54" height="54" patternUnits="userSpaceOnUse"><circle cx="14" cy="18" r="11" fill="#8da58b"/><circle cx="31" cy="34" r="15" fill="#718d70"/><circle cx="46" cy="13" r="9" fill="#a8b99a"/></pattern></defs>
+  <rect width="1200" height="680" rx="28" fill="#dfe6d6"/><path d="M0 0H180L130 680H0Z" fill="#b9d4cf"/><path d="M0 50H175M0 95H166M0 140H158" stroke="#fff" stroke-opacity=".58" stroke-width="3"/>
+  <path d="M120 680C150 555 295 470 390 410S520 300 555 0" fill="none" stroke="#c8c8bd" stroke-width="86"/><path d="M145 680C180 565 305 505 420 450S590 365 730 365H1200" fill="none" stroke="#c8c8bd" stroke-width="64"/><path d="M120 680C150 555 295 470 390 410S520 300 555 0" fill="none" stroke="#f7f5ee" stroke-width="4" stroke-dasharray="16 18"/>
+  <path d="M20 185L190 205 170 580 20 620ZM760 15L1180 20 1170 190 820 165Z" fill="url(#trees)" opacity=".9"/>
+  <g class="map-buildings"><path d="M500 135L770 150 805 340 510 330Z"/><path d="M300 105L450 128 425 270 290 240Z"/><path d="M860 300L1045 340 1020 420 845 390Z"/><path d="M785 115L940 135 915 315 790 290Z"/></g>
+  <g class="map-fields"><rect x="960" y="175" width="185" height="96" rx="10"/><rect x="1010" y="290" width="128" height="62" rx="8"/><rect x="860" y="410" width="142" height="68" rx="8"/></g>
+  <g class="map-small"><rect x="150" y="135" width="90" height="56" rx="8"/><rect x="145" y="225" width="82" height="55" rx="8"/><rect x="230" y="265" width="92" height="56" rx="8"/><rect x="178" y="372" width="126" height="66" rx="8"/>${[0,1,2,3].map(i => `<path d="M${565+i*82} ${520+i*18}l28-18 28 18v38h-56z"/>`).join('')}</g>
+  ${mapSpots.map((s, i) => `<g class="map-pin${i === 0 ? ' active' : ''}" data-map-pin data-n="${s.n}" data-cat="${s.cat}" data-title="${esc(s.title)}" data-text="${esc(s.text)}" transform="translate(${s.x} ${s.y})"${interactive ? ` role="button" tabindex="0" aria-label="${s.n}. ${esc(s.title)}"` : ''}><circle r="24"/><text y="1">${s.n}</text></g>`).join('')}
+</svg>`;
+
 const planBlock = () => `<section class="sec bg2" id="plan">
   <div class="wrap">
-    <div class="sec-head rv"><h2>23 объекта на территории</h2><p>Корпуса, спортивные площадки, бани и беседки стоят в сосновом лесу на берегу водохранилища. Парковка рассчитана и на автобусы.</p></div>
-    <div class="g plan rv">
-      <div class="s7"><div class="ph plan-img">${photo('plan', 'Схема территории комплекса «Курганово» с номерами объектов')}</div></div>
-      <div class="s5 legend">${territory.map(gr => `<div><h3>${esc(gr.group)}</h3><ul>${gr.items.map(([n, t]) => `<li><i>${n}</i><span>${esc(t)}</span></li>`).join('')}</ul></div>`).join('')}</div>
-    </div>
+    <div class="sec-head rv"><h2>21 объект на одной территории</h2><p>Новая схема показывает, где находятся корпуса, спортивные зоны, бани, беседки и пляж.</p></div>
+    <a class="map-preview rv" href="territoriya.html">${mapGraphic(false)}<span class="btn btn-accent">Открыть интерактивную карту</span></a>
   </div>
 </section>`;
+
+const territoryPage = `${lhero({ crumb: 'Территория', h1: 'Всё Курганово на одной карте', lead: 'Выберите объект на схеме, чтобы узнать, что находится внутри или рядом.' })}
+<section class="sec map-page"><div class="wrap">
+  <div class="map-filters" aria-label="Фильтры карты"><button class="chip" data-map-filter="all" aria-pressed="true">Всё</button><button class="chip" data-map-filter="stay">Проживание</button><button class="chip" data-map-filter="sport">Спорт</button><button class="chip" data-map-filter="event">Мероприятия</button><button class="chip" data-map-filter="spa">SPA</button><button class="chip" data-map-filter="family">Для семьи</button></div>
+  <div class="tmap-layout" data-territory-map><div class="tmap-canvas">${mapGraphic(true)}</div><aside class="map-detail" aria-live="polite"><span class="map-detail-num">1</span><p class="kicker">Объект на карте</p><h2 data-map-title>${mapSpots[0].title}</h2><p data-map-text>${mapSpots[0].text}</p><a class="link" href="kontakty.html">Как добраться</a></aside></div>
+  <div class="map-index">${mapSpots.map(s => `<button data-map-list data-n="${s.n}"><b>${s.n}</b><span>${esc(s.title)}</span></button>`).join('')}</div>
+</div></section>${cta('Нужна помощь с маршрутом по комплексу?')}`;
 
 const page = (file, meta, body) => writeFileSync(join(ROOT, file), `${head({ ...meta, file })}
 <body>
@@ -160,6 +196,8 @@ ${footer()}
 </body>
 </html>
 `);
+
+page('territoriya.html', { title: 'Интерактивная карта территории – Курганово', desc: 'Корпуса, спортивные зоны, бани, беседки и пляж на интерактивной схеме Курганово.' }, territoryPage);
 
 // ═════════ Главная ═════════
 const tiles = [
@@ -558,4 +596,4 @@ ${planBlock()}
 
 ${cta('Оставьте заявку, и администратор перезвонит')}`);
 
-console.log('Готово: 7 страниц');
+console.log('Готово: 8 страниц');

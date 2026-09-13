@@ -121,6 +121,38 @@
     d.querySelectorAll('.pblock').forEach(b => io.observe(b));
   }
 
+  // Интерактивная карта территории
+  const tm = d.querySelector('[data-territory-map]');
+  if (tm) {
+    const pins = [...tm.querySelectorAll('[data-map-pin]')];
+    const lists = [...d.querySelectorAll('[data-map-list]')];
+    const title = tm.querySelector('[data-map-title]');
+    const text = tm.querySelector('[data-map-text]');
+    const num = tm.querySelector('.map-detail-num');
+    const select = n => {
+      const pin = pins.find(x => x.dataset.n === String(n));
+      if (!pin || pin.classList.contains('dim')) return;
+      pins.forEach(x => x.classList.toggle('active', x === pin));
+      lists.forEach(x => x.classList.toggle('active', x.dataset.n === String(n)));
+      title.textContent = pin.dataset.title;
+      text.textContent = pin.dataset.text;
+      num.textContent = pin.dataset.n;
+    };
+    pins.forEach(pin => {
+      pin.addEventListener('click', () => select(pin.dataset.n));
+      pin.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); select(pin.dataset.n); } });
+    });
+    lists.forEach(b => b.addEventListener('click', () => select(b.dataset.n)));
+    d.querySelectorAll('[data-map-filter]').forEach(b => b.addEventListener('click', () => {
+      const cat = b.dataset.mapFilter;
+      d.querySelectorAll('[data-map-filter]').forEach(x => x.setAttribute('aria-pressed', String(x === b)));
+      pins.forEach(pin => pin.classList.toggle('dim', cat !== 'all' && !pin.dataset.cat.split(' ').includes(cat)));
+      const first = pins.find(pin => !pin.classList.contains('dim'));
+      if (first) select(first.dataset.n);
+    }));
+    select(1);
+  }
+
   // Демо-форма
   const toast = d.querySelector('.toast');
   let tt;
