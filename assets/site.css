@@ -46,12 +46,11 @@ h3{font-size:22px;line-height:1.2;font-weight:600}
 .todo{color:var(--ink3);border-bottom:1px dashed currentColor;font-size:.94em}
 .dark .todo{color:var(--ink-inv)}
 
-/* лента */
-.ribbon path{fill:none;stroke-width:12}
+/* графический акцент */
 .stripe{display:flex;width:160px;height:6px;border-radius:3px;overflow:hidden}
 .stripe i{flex:1}
-.stripe i:nth-child(1){background:var(--rb1)} .stripe i:nth-child(2){background:var(--rb2)} .stripe i:nth-child(3){background:var(--rb3)} .stripe i:nth-child(4){background:var(--rb4)} .stripe i:nth-child(5){background:var(--rb5)}
-.progress{position:fixed;top:0;left:0;right:0;height:3px;z-index:90;transform-origin:0 50%;transform:scaleX(0);background:linear-gradient(90deg,var(--rb1),var(--rb2) 25%,var(--rb3) 50%,var(--rb4) 75%,var(--rb5))}
+.stripe i{background:var(--rb5)}
+.progress{position:fixed;top:0;left:0;right:0;height:3px;z-index:90;transform-origin:0 50%;transform:scaleX(0);background:var(--brand)}
 
 /* кнопки */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 24px;border:0;border-radius:var(--r2);background:var(--brand);color:#fff;font:600 16px/1.2 var(--f-body);transition:background-color .2s ease,color .2s ease;white-space:nowrap}
@@ -66,13 +65,6 @@ h3{font-size:22px;line-height:1.2;font-weight:600}
 .proto{background:var(--navy);color:var(--ink-inv);font-size:12.5px;line-height:1.4;text-align:center;padding:6px 16px}
 .hdr{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid var(--line)}
 .hdr-in{display:flex;align-items:center;gap:24px;height:var(--hdr)}
-.logo{display:flex;align-items:center;gap:10px;flex-shrink:0;color:var(--brand)}
-.logo,.hdr .logo{color:#111}
-.logo-mark{width:42px;height:42px;object-fit:contain;image-rendering:auto}
-.logo-t{display:flex;flex-direction:column;line-height:1}
-.logo-t small{font:500 11px/1.2 var(--f-body);color:var(--ink3);margin-bottom:2px}
-.logo-t b{font:750 25px/1 var(--f-head);letter-spacing:-.04em}
-.logo-t b{color:#111}
 .nav{display:flex;gap:4px;margin-left:auto}
 .nav a{padding:8px 12px;border-radius:var(--r2);font-size:15px;font-weight:500;color:var(--ink2);transition:background-color .2s ease}
 .nav a:hover{background:var(--bg2);color:var(--ink)}
@@ -92,7 +84,7 @@ h3{font-size:22px;line-height:1.2;font-weight:600}
 .drawer .btn{margin-top:20px;width:100%;border-bottom:0;color:#fff}
 @media(max-width:1100px){.nav{display:none}.hdr-phone{margin-left:auto}.burger{display:grid}}
 @media(min-width:1101px){.drawer{display:none!important}}
-@media(max-width:480px){.hdr-in{gap:12px}.logo-mark{width:36px;height:36px}.logo-t b{font-size:23px}.logo-t small{font-size:10px}.hdr-phone small{display:none}.hdr-phone span{font-size:16px}.hdr-phone .ph-long{display:none}.hdr-phone .ph-short{display:inline}}
+@media(max-width:480px){.hdr-in{gap:12px}.hdr-phone small{display:none}.hdr-phone span{font-size:16px}.hdr-phone .ph-long{display:none}.hdr-phone .ph-short{display:inline}}
 
 /* секции и сетка */
 .sec{padding-block:96px}
@@ -101,7 +93,7 @@ h3{font-size:22px;line-height:1.2;font-weight:600}
 .dark{background:var(--navy);color:#fff}
 .sec-head{max-width:780px;margin-bottom:48px}
 .sec-head h2{position:relative;padding-top:18px}
-.sec-head h2::before{content:'';position:absolute;top:0;left:0;width:48px;height:4px;border-radius:4px;background:linear-gradient(90deg,var(--rb3),var(--rb4))}
+.sec-head h2::before{content:'';position:absolute;top:0;left:0;width:48px;height:4px;border-radius:4px;background:var(--brand)}
 .sec-head p{margin-top:16px;font-size:18px;color:var(--ink2);max-width:66ch}
 .dark .sec-head p{color:var(--ink-inv)}
 .g{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:var(--gut)}
@@ -112,7 +104,6 @@ h3{font-size:22px;line-height:1.2;font-weight:600}
 .cap{margin-top:10px;font-size:14px;color:var(--ink3)}
 .imgph{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:16px;background:var(--bg2);color:var(--ink3);font-size:14px;text-align:center}
 .imgph::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent 0 24px,rgba(17,27,39,.03) 24px 48px)}
-.imgph .ribbon{width:44px;height:44px;opacity:.55;position:relative}
 .imgph span{position:relative}
 .facts{display:grid;gap:12px;margin-top:24px}
 .facts li{display:flex;gap:12px;align-items:flex-start}
@@ -129,7 +120,6 @@ h3{font-size:22px;line-height:1.2;font-weight:600}
 .hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;animation:kb 26s ease-out both}
 @keyframes kb{from{transform:scale(1.08)}to{transform:scale(1)}}
 .hero::after,.phero::after{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(8,30,26,.58) 0%,rgba(8,30,26,.2) 48%,rgba(8,30,26,.05) 75%),linear-gradient(0deg,rgba(8,30,26,.34) 0%,transparent 52%)}
-.ribbon-deco{position:absolute;right:0;bottom:0;width:clamp(150px,22vw,320px);height:auto;pointer-events:none}
 .hero .wrap,.phero .wrap{position:relative;width:100%;z-index:1}
 .hero .wrap{padding-block:72px}
 .phero .wrap{padding-block:96px 56px}
@@ -150,7 +140,6 @@ h3{font-size:22px;line-height:1.2;font-weight:600}
 .lhero{position:relative;overflow:hidden;background:var(--bg2);padding-block:72px 56px}
 .lhero .crumbs{color:var(--ink3)} .lhero .crumbs a:hover{color:var(--ink)}
 .lhero .hero-lead{color:var(--ink2)}
-.lhero .ribbon-deco{width:clamp(120px,16vw,220px)}
 
 /* главная: направления */
 .tiles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--gut)}
@@ -284,8 +273,6 @@ h3{font-size:22px;line-height:1.2;font-weight:600}
 .ftr-call a{display:block;color:#fff;font:700 clamp(28px,3.2vw,42px)/1 var(--f-head);font-variant-numeric:tabular-nums}
 .ftr-call span{display:block;margin-top:7px;font-size:13px}
 .ftr-main{display:grid;grid-template-columns:1.35fr .7fr 1.15fr .8fr;gap:40px;padding-block:48px 8px}
-.ftr .logo{width:max-content;padding:8px 12px;border-radius:8px;background:#fff;color:#111}
-.ftr .logo-t small{color:var(--ink3)}
 .ftr b{display:block;margin-bottom:14px;color:#fff;font-weight:600}
 .ftr-col a{display:block;padding-block:4px}
 .ftr-col a:hover{color:#fff}
@@ -359,7 +346,7 @@ h3{font-size:22px;line-height:1.2;font-weight:600}
 .lad-top .lad-num small,.lad-top .lad-price small{color:var(--ink-inv)}
 .lad-top .lad-name span{color:var(--ink-inv)}
 .lad-top .lad-bar{background:rgba(255,255,255,.12)}
-.lad-top .lad-bar i{background:linear-gradient(90deg,var(--rb1),var(--rb2) 25%,var(--rb3) 50%,var(--rb4) 75%,var(--rb5))}
+.lad-top .lad-bar i{background:var(--rb5)}
 .fcard{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:var(--r3);overflow:hidden;background:#fff;box-shadow:0 12px 34px rgba(16,41,37,.055)}
 .fcard .ph{border-radius:0}
 .fcard-b{display:flex;flex-direction:column;flex:1;padding:28px}
@@ -463,7 +450,6 @@ h3{font-size:22px;line-height:1.2;font-weight:600}
   .hero-facts b{font-size:26px}
   .phero{min-height:400px}
   .phero .wrap{padding-block:72px 40px}
-  .ribbon-deco{width:120px}
   .peak-lead{font-size:18px}
   .stats b{font-size:40px}
   .card,.form,.callcard,.infocard{padding:24px}

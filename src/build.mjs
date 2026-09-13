@@ -15,12 +15,8 @@ const ic = (name, cls = '') => `<svg class="ic${cls ? ' ' + cls : ''}" viewBox="
 const P = Object.fromEntries(prices.map(p => [p.id, p]));
 const photo = (name, alt, { eager = false, cls = '', pos = '' } = {}) =>
   `<img src="assets/img/${name}.webp" alt="${esc(alt)}"${cls ? ` class="${cls}"` : ''}${pos ? ` style="object-position:${pos}"` : ''}${eager ? ' fetchpriority="high"' : ' loading="lazy"'} decoding="async">`;
-const ribbon = cls => `<svg class="ribbon${cls ? ' ' + cls : ''}" viewBox="0 0 120 120" aria-hidden="true">${[0, 1, 2, 3, 4].map(i => {
-  const r = 108 - i * 15;
-  return `<path d="M${120 - r} 120A${r} ${r} 0 0 1 120 ${120 - r}" style="stroke:var(--rb${i + 1})"/>`;
-}).join('')}</svg>`;
-const stripe = '<span class="stripe" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>';
-const slot = (label, cls = 'ar43') => `<div class="ph imgph ${cls}">${ribbon('')}<span>${esc(label)}</span></div>`;
+const stripe = '<span class="stripe" aria-hidden="true"><i></i></span>';
+const slot = (label, cls = 'ar43') => `<div class="ph imgph ${cls}"><span>${esc(label)}</span></div>`;
 const checks = items => `<ul class="facts">${items.map(t => `<li>${ic('check')}<span>${t}</span></li>`).join('')}</ul>`;
 const plist = items => `<ul class="plist">${items.map(([a, b]) => `<li><span>${a}</span><span>${b}</span></li>`).join('')}</ul>`;
 const PRICE_NOTE = `Цены из прайса комплекса на ${site.priceValid}.`;
@@ -54,19 +50,15 @@ const head = ({ title, desc, file }) => `<!doctype html>
 <meta property="og:description" content="${esc(desc)}">
 <meta property="og:image" content="${BASE}assets/img/og.jpg">
 <meta name="theme-color" content="#176b5b">
-<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="preload" href="assets/fonts/onest-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/site.css?v=${V}">
 <script>document.documentElement.classList.add('js');if(/[?&]still/.test(location.search))document.documentElement.classList.add('still')</script>
 </head>`;
 
-const logo = () => `<a class="logo" href="index.html" aria-label="Курганово, на главную"><img class="logo-mark" src="assets/favicon.svg" alt=""><span class="logo-t"><small>спортивный комплекс</small><b>Курганово</b></span></a>`;
-
 const header = file => `<div class="progress" aria-hidden="true"></div>
 <div class="proto">Прототип нового сайта. Тексты, цены и фото взяты с kurganovo.com 13.09.2026</div>
 <header class="hdr">
   <div class="wrap hdr-in">
-    ${logo()}
     <nav class="nav" aria-label="Разделы">${nav.map(n => `<a href="${n.href}"${n.href === file ? ' aria-current="page"' : ''}>${n.label}</a>`).join('')}</nav>
     <a class="hdr-phone" href="${site.phoneHref}"><span class="ph-long">${site.phone}</span><span class="ph-short">${site.phoneShort}</span><small>администратор, круглосуточно</small></a>
     <button class="burger" type="button" aria-label="Меню" aria-expanded="false" aria-controls="drawer">${ic('menu', 'i-menu')}${ic('x', 'i-x')}</button>
@@ -77,7 +69,7 @@ const header = file => `<div class="progress" aria-hidden="true"></div>
 const footer = () => `<footer class="ftr">
   <div class="wrap">
     <div class="ftr-main">
-      <div>${logo()}<p class="ftr-addr">${esc(site.address)}<br>${esc(site.addressNote)}</p><p class="ftr-addr">${esc(site.office)}</p></div>
+      <div><p class="ftr-addr">${esc(site.address)}<br>${esc(site.addressNote)}</p><p class="ftr-addr">${esc(site.office)}</p></div>
       <nav class="ftr-col" aria-label="Разделы сайта"><b>Разделы</b>${nav.map(n => `<a href="${n.href}">${n.label}</a>`).join('')}</nav>
       <div><b>Прямые телефоны</b><div class="ftr-ph">${phones.slice(1, 4).map(p => `<div><a href="${p.href}">${p.num}</a><span>${esc(p.topic)}</span></div>`).join('')}</div></div>
       <div class="ftr-col"><b>Гостям</b>${docs.filter(d => /Правила|Политика/.test(d.title)).map(d => `<a href="${d.href}" target="_blank" rel="noopener">${esc(d.title)}</a>`).join('')}<a href="kontakty.html#dokumenty">Документы и лицензии</a><a href="${site.vk}" target="_blank" rel="noopener">ВКонтакте</a></div>
