@@ -55,10 +55,13 @@ const head = ({ title, desc, file }) => `<!doctype html>
 <script>document.documentElement.classList.add('js');if(/[?&]still/.test(location.search))document.documentElement.classList.add('still')</script>
 </head>`;
 
+const wordmark = () => `<a class="wordmark" href="index.html" aria-label="Курганово, на главную"><small>спортивный комплекс</small><b>Курганово</b></a>`;
+
 const header = file => `<div class="progress" aria-hidden="true"></div>
 <div class="proto">Прототип нового сайта. Тексты, цены и фото взяты с kurganovo.com 13.09.2026</div>
 <header class="hdr">
   <div class="wrap hdr-in">
+    ${wordmark()}
     <nav class="nav" aria-label="Разделы">${nav.map(n => `<a href="${n.href}"${n.href === file ? ' aria-current="page"' : ''}>${n.label}</a>`).join('')}</nav>
     <a class="hdr-phone" href="${site.phoneHref}"><span class="ph-long">${site.phone}</span><span class="ph-short">${site.phoneShort}</span><small>администратор, круглосуточно</small></a>
     <button class="burger" type="button" aria-label="Меню" aria-expanded="false" aria-controls="drawer">${ic('menu', 'i-menu')}${ic('x', 'i-x')}</button>
@@ -69,7 +72,7 @@ const header = file => `<div class="progress" aria-hidden="true"></div>
 const footer = () => `<footer class="ftr">
   <div class="wrap">
     <div class="ftr-main">
-      <div><p class="ftr-addr">${esc(site.address)}<br>${esc(site.addressNote)}</p><p class="ftr-addr">${esc(site.office)}</p></div>
+      <div>${wordmark()}<p class="ftr-addr">${esc(site.address)}<br>${esc(site.addressNote)}</p><p class="ftr-addr">${esc(site.office)}</p></div>
       <nav class="ftr-col" aria-label="Разделы сайта"><b>Разделы</b>${nav.map(n => `<a href="${n.href}">${n.label}</a>`).join('')}</nav>
       <div><b>Прямые телефоны</b><div class="ftr-ph">${phones.slice(1, 4).map(p => `<div><a href="${p.href}">${p.num}</a><span>${esc(p.topic)}</span></div>`).join('')}</div></div>
       <div class="ftr-col"><b>Гостям</b>${docs.filter(d => /Правила|Политика/.test(d.title)).map(d => `<a href="${d.href}" target="_blank" rel="noopener">${esc(d.title)}</a>`).join('')}<a href="kontakty.html#dokumenty">Документы и лицензии</a><a href="${site.vk}" target="_blank" rel="noopener">ВКонтакте</a></div>

@@ -65,6 +65,7 @@ h3{font-size:22px;line-height:1.2;font-weight:600}
 .proto{background:var(--navy);color:var(--ink-inv);font-size:12.5px;line-height:1.4;text-align:center;padding:6px 16px}
 .hdr{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid var(--line)}
 .hdr-in{display:flex;align-items:center;gap:24px;height:var(--hdr)}
+.wordmark{display:flex;flex-direction:column;flex-shrink:0;line-height:1;color:#111}.wordmark small{margin-bottom:3px;color:var(--ink3);font:500 11px/1.15 var(--f-body)}.wordmark b{color:#111;font:750 25px/1 var(--f-head);letter-spacing:-.04em}
 .nav{display:flex;gap:4px;margin-left:auto}
 .nav a{padding:8px 12px;border-radius:var(--r2);font-size:15px;font-weight:500;color:var(--ink2);transition:background-color .2s ease}
 .nav a:hover{background:var(--bg2);color:var(--ink)}
@@ -84,7 +85,7 @@ h3{font-size:22px;line-height:1.2;font-weight:600}
 .drawer .btn{margin-top:20px;width:100%;border-bottom:0;color:#fff}
 @media(max-width:1100px){.nav{display:none}.hdr-phone{margin-left:auto}.burger{display:grid}}
 @media(min-width:1101px){.drawer{display:none!important}}
-@media(max-width:480px){.hdr-in{gap:12px}.hdr-phone small{display:none}.hdr-phone span{font-size:16px}.hdr-phone .ph-long{display:none}.hdr-phone .ph-short{display:inline}}
+@media(max-width:480px){.hdr-in{gap:12px}.wordmark b{font-size:22px}.wordmark small{font-size:9px}.hdr-phone small{display:none}.hdr-phone span{font-size:16px}.hdr-phone .ph-long{display:none}.hdr-phone .ph-short{display:inline}}
 
 /* секции и сетка */
 .sec{padding-block:96px}
@@ -273,6 +274,7 @@ h3{font-size:22px;line-height:1.2;font-weight:600}
 .ftr-call a{display:block;color:#fff;font:700 clamp(28px,3.2vw,42px)/1 var(--f-head);font-variant-numeric:tabular-nums}
 .ftr-call span{display:block;margin-top:7px;font-size:13px}
 .ftr-main{display:grid;grid-template-columns:1.35fr .7fr 1.15fr .8fr;gap:40px;padding-block:48px 8px}
+.ftr .wordmark{width:max-content;padding:9px 12px;border-radius:8px;background:#fff}
 .ftr b{display:block;margin-bottom:14px;color:#fff;font-weight:600}
 .ftr-col a{display:block;padding-block:4px}
 .ftr-col a:hover{color:#fff}
