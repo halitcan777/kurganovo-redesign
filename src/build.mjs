@@ -54,13 +54,13 @@ const head = ({ title, desc, file }) => `<!doctype html>
 <meta property="og:description" content="${esc(desc)}">
 <meta property="og:image" content="${BASE}assets/img/og.jpg">
 <meta name="theme-color" content="#176b5b">
-<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/favicon.ico" sizes="16x16">
 <link rel="preload" href="assets/fonts/onest-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/site.css?v=${V}">
 <script>document.documentElement.classList.add('js');if(/[?&]still/.test(location.search))document.documentElement.classList.add('still')</script>
 </head>`;
 
-const logo = () => `<a class="logo" href="index.html" aria-label="Курганово, на главную">${ribbon('logo-mark')}<span class="logo-t"><small>спортивный комплекс</small><b>Курганово</b></span></a>`;
+const logo = () => `<a class="logo" href="index.html" aria-label="Курганово, на главную"><img class="logo-mark" src="assets/favicon.ico" alt=""><span class="logo-t"><small>спортивный комплекс</small><b>Курганово</b></span></a>`;
 
 const header = file => `<div class="progress" aria-hidden="true"></div>
 <div class="proto">Прототип нового сайта. Тексты, цены и фото взяты с kurganovo.com 13.09.2026</div>
@@ -440,7 +440,7 @@ const formats = [
 page('meropriyatiya.html', {
   title: 'Мероприятия: корпоративы, свадьбы, конференции – Курганово',
   desc: 'Площадки на 10, 50 и 100 гостей, конференц-залы и арена на 1 500 зрителей. Регистрация на берегу водохранилища.',
-}, `${phero({ crumb: 'Мероприятия', kicker: 'Праздники · корпоративы · конференции', h1: 'Праздник на берегу или турнир на арене', lead: 'Площадки на 10, 50 и 100 гостей и арена на 1 500 зрителей. Банкет готовит своя служба питания.', image: 'wedding-hero-v2', alt: 'Выездная регистрация на берегу водохранилища', pos: '45% 60%' })}
+}, `${phero({ crumb: 'Мероприятия', kicker: 'Праздники · корпоративы · конференции', h1: 'Праздник на берегу или турнир на арене', lead: 'Площадки на 10, 50 и 100 гостей и арена на 1 500 зрителей. Банкет готовит своя служба питания.', image: 'wedding-hero-v3', alt: 'Выездная регистрация на берегу водохранилища', pos: '45% 60%' })}
 
 <section class="sec">
   <div class="wrap">
@@ -482,7 +482,7 @@ const hm = m => `${Math.floor(m / 60)}:${String(m % 60).padStart(2, '0')}`;
 page('bassein.html', {
   title: 'Бассейн, тренажёрный зал и SPA – Курганово',
   desc: 'Бассейн 25 м на три дорожки, сеанс 480 ₽ с сауной. Тренажёрный зал, массаж, соляная сауна и карты на месяц.',
-}, `${phero({ crumb: 'Бассейн и SPA', kicker: 'Бассейн · тренажёрный зал · SPA', h1: 'Бассейн 25 метров, тренажёрный зал и SPA', lead: 'Три дорожки, глубина 1,5 м. Сеанс длится 45 минут, сауна входит в стоимость.', image: 'pool-hero-v2', alt: 'Бассейн на три дорожки с фирменным панно', pos: '50% 60%' })}
+}, `${phero({ crumb: 'Бассейн и SPA', kicker: 'Бассейн · тренажёрный зал · SPA', h1: 'Бассейн 25 метров, тренажёрный зал и SPA', lead: 'Три дорожки, глубина 1,5 м. Сеанс длится 45 минут, сауна входит в стоимость.', image: 'pool-hero-v3', alt: 'Бассейн на три дорожки', pos: '50% 60%' })}
 
 <section class="sec">
   <div class="wrap g">
