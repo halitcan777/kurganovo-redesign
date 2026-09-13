@@ -6,7 +6,7 @@ import { site, nav, phones, clients, docs, territory, prices, rooms, poolSession
 import { icons } from './icons.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
-const BASE = 'https://halitcan777.github.io/kurganovo-prototype/';
+const BASE = 'https://halitcan777.github.io/kurganovo-redesign/';
 const V = Date.now().toString(36);
 
 // ––– помощники –––
@@ -55,8 +55,7 @@ const head = ({ title, desc, file }) => `<!doctype html>
 <meta property="og:image" content="${BASE}assets/img/og.jpg">
 <meta name="theme-color" content="#176b5b">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-<link rel="preload" href="assets/fonts/fira-sans-condensed-cyrillic-700-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="assets/fonts/fira-sans-cyrillic-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/onest-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/site.css?v=${V}">
 <script>document.documentElement.classList.add('js');if(/[?&]still/.test(location.search))document.documentElement.classList.add('still')</script>
 </head>`;
@@ -179,20 +178,16 @@ page('index.html', {
   title: 'Курганово – спортивный комплекс и база отдыха на Полевском тракте',
   desc: 'Две ледовые арены, бассейн 25 м, гостиница, бани и площадки для праздников на берегу Верхне-Макаровского водохранилища.',
 }, `<section class="hero">
-  ${photo('hockey', 'Хоккейный матч у борта с фирменной лентой комплекса', { eager: true, cls: 'hero-img', pos: '72% 40%' })}
-  ${ribbon('ribbon-deco')}
+  ${photo('hero-facade-v2', 'Главный корпус спортивного комплекса «Курганово»', { eager: true, cls: 'hero-img', pos: '58% 50%' })}
   <div class="wrap">
-    <p class="kicker">Спортивный комплекс · 30-й км Полевского тракта</p>
-    <h1>Две ледовые арены, бассейн и гостиница у воды</h1>
-    <p class="hero-lead">Бывшая база «Автомобилист» на берегу Верхне-Макаровского водохранилища. Здесь тренируются хоккейные команды, гуляют свадьбы и корпоративы, а семьи из Екатеринбурга приезжают на выходные.</p>
-    <div class="hero-cta">
-      <a class="btn btn-light" href="${site.phoneHref}">${ic('phone')}Позвонить: ${site.phoneShort}</a>
-      <a class="btn btn-ghost" href="ceny.html">Все цены</a>
-    </div>
-    <div class="hero-facts">
-      <div><b>${ic('star')}${site.rating.value}</b><small>Яндекс Карты, ${site.rating.ratings} оценок</small></div>
-      <div><b>1 500</b><small>зрителей на Олимпийской арене</small></div>
-      <div><b>от 4 500 ₽</b><small>номер в сутки</small></div>
+    <div class="hero-panel">
+      <p class="kicker">Спорт и отдых у воды</p>
+      <h1>Место, где хочется остаться</h1>
+      <p class="hero-lead">Лёд, бассейн, гостиница и сосновый берег в одохранилища. Всё для сборов, выходных и больших событий в одном месте.</p>
+      <div class="hero-cta">
+        <a class="btn btn-accent" href="${site.phoneHref}">${ic('phone')}Позвонить: ${site.phoneShort}</a>
+        <a class="hero-link" href="prozhivanie.html">Посмотреть варианты</a>
+      </div>
     </div>
   </div>
 </section>
