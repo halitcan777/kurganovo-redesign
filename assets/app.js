@@ -128,7 +128,18 @@
     const lists = [...d.querySelectorAll('[data-map-list]')];
     const title = tm.querySelector('[data-map-title]');
     const text = tm.querySelector('[data-map-text]');
+    const meta = tm.querySelector('[data-map-meta]');
+    const features = tm.querySelector('[data-map-features]');
+    const action = tm.querySelector('[data-map-link]');
+    const route = tm.querySelector('[data-map-route]');
+    const routeToggle = tm.querySelector('[data-map-route-toggle]');
+    const svg = tm.querySelector('.tmap-svg');
     const num = tm.querySelector('.map-detail-num');
+    let zoom = 1;
+    const drawRoute = pin => {
+      const x = Number(pin.dataset.x), y = Number(pin.dataset.y);
+      route.setAttribute('d', `M225 520 C270 475 330 435 390 405 C470 365 525 355 590 350 C${Math.round((590+x)/2)} ${Math.round((350+y)/2)} ${x} ${y} ${x} ${y}`);
+    };
     const select = n => {
       const pin = pins.find(x => x.dataset.n === String(n));
       if (!pin || pin.classList.contains('dim')) return;
@@ -136,7 +147,12 @@
       lists.forEach(x => x.classList.toggle('active', x.dataset.n === String(n)));
       title.textContent = pin.dataset.title;
       text.textContent = pin.dataset.text;
+      meta.textContent = pin.dataset.meta;
+      features.replaceChildren(...pin.dataset.features.split('|').map(value => { const li = d.createElement('li'); li.textContent = value; return li; }));
+      action.href = pin.dataset.href;
+      action.textContent = pin.dataset.link;
       num.textContent = pin.dataset.n;
+      drawRoute(pin);
     };
     pins.forEach(pin => {
       pin.addEventListener('click', () => select(pin.dataset.n));
@@ -149,6 +165,16 @@
       pins.forEach(pin => pin.classList.toggle('dim', cat !== 'all' && !pin.dataset.cat.split(' ').includes(cat)));
       const first = pins.find(pin => !pin.classList.contains('dim'));
       if (first) select(first.dataset.n);
+    }));
+    routeToggle.addEventListener('click', () => {
+      const on = routeToggle.getAttribute('aria-pressed') !== 'true';
+      routeToggle.setAttribute('aria-pressed', String(on));
+      route.classList.toggle('on', on);
+    });
+    tm.querySelectorAll('[data-map-zoom]').forEach(button => button.addEventListener('click', () => {
+      zoom = button.dataset.mapZoom === 'reset' ? 1 : Math.max(1, Math.min(1.6, zoom + (button.dataset.mapZoom === 'in' ? .2 : -.2)));
+      svg.style.transform = `scale(${zoom})`;
+      tm.querySelector('[data-map-zoom="reset"]').textContent = `${Math.round(zoom * 100)}%`;
     }));
     select(1);
   }

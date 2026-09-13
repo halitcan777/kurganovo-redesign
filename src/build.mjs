@@ -76,10 +76,6 @@ const header = file => `<div class="progress" aria-hidden="true"></div>
 
 const footer = () => `<footer class="ftr">
   <div class="wrap">
-    <div class="ftr-top">
-      <div><h2>Поможем собрать поездку под ваш сценарий</h2><p>Номера, спорт, бани и площадки на одной территории. Администратор на связи круглосуточно.</p></div>
-      <div class="ftr-call"><a href="${site.phoneHref}">${site.phone}</a><span>Общие вопросы и бронирование</span></div>
-    </div>
     <div class="ftr-main">
       <div>${logo()}<p class="ftr-addr">${esc(site.address)}<br>${esc(site.addressNote)}</p><p class="ftr-addr">${esc(site.office)}</p></div>
       <nav class="ftr-col" aria-label="Разделы сайта"><b>Разделы</b>${nav.map(n => `<a href="${n.href}">${n.label}</a>`).join('')}</nav>
@@ -119,7 +115,6 @@ const cta = (title, topic = '') => `<section class="sec cta" id="zayavka">
 
 const phero = ({ crumb, kicker, h1, lead, image, alt, pos }) => `<section class="phero">
   ${photo(image, alt, { eager: true, cls: 'hero-img', pos })}
-  ${ribbon('ribbon-deco')}
   <div class="wrap">
     <nav class="crumbs" aria-label="Навигация"><a href="index.html">Главная</a><span>/</span><span>${crumb}</span></nav>
     ${kicker ? `<p class="kicker">${kicker}</p>` : ''}
@@ -138,24 +133,24 @@ const lhero = ({ crumb, h1, lead, extra = '' }) => `<section class="lhero">
 </section>`;
 
 const mapSpots = [
-  { n: 1, cat: 'stay sport', title: 'Главный корпус', text: 'Ресепшн, ледовые арены, зал игровых видов спорта, спортбар, гостиница, детская комната, прокат.', x: 650, y: 230 },
-  { n: 2, cat: 'stay', title: 'Корпус «Европа»', text: 'Гостиница, зал фитнеса и бильярд.', x: 370, y: 170 },
-  { n: 3, cat: 'stay event', title: 'Корпус «Азия»', text: 'Гостиница, столовая и конференц-залы.', x: 930, y: 315 },
-  { n: 4, cat: 'service', title: 'Въезд', text: 'Охраняемый въезд на территорию.', x: 225, y: 520 },
-  { n: 5, cat: 'service', title: 'Парковка', text: 'Парковка для легковых автомобилей и автобусов.', x: 390, y: 355 },
-  { n: 6, cat: 'food event', title: 'Гриль-бар «Овертайм»', text: 'Гриль-меню, столики и банкетное обслуживание.', x: 195, y: 260 },
-  { n: 7, cat: 'stay', title: 'Коттеджи', text: 'Два бревенчатых коттеджа для компаний.', x: 215, y: 165 },
-  { n: 8, cat: 'event', title: 'Большая беседка', text: 'Крытая беседка с мебелью и светом.', x: 280, y: 300 },
-  { n: 9, cat: 'sport spa', title: 'Спортивная зона', text: 'Бассейн, тренажёрный зал, единоборства, хоккейный тир, велокласс и SPA.', x: 845, y: 210 },
-  { n: 10, cat: 'sport', title: 'Футбольное поле', text: 'Открытое поле с искусственным покрытием.', x: 930, y: 245 },
-  { n: 11, cat: 'sport', title: 'Волейбольная площадка', text: 'Открытая площадка 18 × 9 м.', x: 1050, y: 300 },
-  { n: 12, cat: 'sport', title: 'Пейнтбол и лазертаг', text: 'Лесная игровая зона.', x: 875, y: 82 },
-  { n: 13, cat: 'event', title: 'Шатёр', text: 'Площадка для мероприятий с мебелью и бетонным полом.', x: 675, y: 420 },
-  { n: 14, cat: 'family', title: 'Детский городок', text: 'Уличная игровая площадка.', x: 770, y: 455 },
-  { n: 15, cat: 'sport', title: 'Стритбол', text: 'Открытая площадка для игры в стритбол.', x: 920, y: 455 },
-  ...[16,17,18,19].map((n, i) => ({ n, cat: 'event', title: `Беседка №${i + 2}`, text: 'Беседка у воды с мангалом и светом.', x: 600 + i * 82, y: 540 + i * 18 })),
-  { n: 20, cat: 'spa stay', title: 'Бани', text: 'Три бани с парными и зонами отдыха.', x: 235, y: 405 },
-  { n: 21, cat: 'family', title: 'Пляж', text: 'Береговая зона у водохранилища.', x: 85, y: 120 },
+  { n: 1, cat: 'stay sport food family', title: 'Главный корпус', meta: 'Центр комплекса', text: 'Здесь начинается знакомство с Курганово: ресепшн, две ледовые арены, зал игровых видов спорта и все основные сервисы.', features: 'Ресепшн|Олимпийская и Канадская арены|Спортбар|Гостиница|Детская комната|Прокат', href: 'sport.html', link: 'Спорт и арены', x: 650, y: 230 },
+  { n: 2, cat: 'stay sport', title: 'Корпус «Европа»', meta: 'Проживание и фитнес', text: 'Гостиничный корпус рядом с главным зданием. Удобен для команд, семей и гостей длительных сборов.', features: 'Номера разных категорий|Зал фитнеса|Бильярд|Корпус «Европа+»', href: 'prozhivanie.html', link: 'Выбрать номер', x: 370, y: 170 },
+  { n: 3, cat: 'stay event food', title: 'Корпус «Азия»', meta: 'Проживание и деловые события', text: 'Отдельный гостиничный корпус со своей столовой и двумя конференц-залами. Подходит для сборов и корпоративных заездов.', features: 'Гостиница|Столовая|Конференц-зал на 60 мест|Конференц-зал на 50 мест', href: 'meropriyatiya.html', link: 'Конференции и события', x: 930, y: 315 },
+  { n: 4, cat: 'service', title: 'Въезд и охрана', meta: 'Начало маршрута', text: 'Главный автомобильный въезд с постом охраны. Отсюда дорога ведёт к парковке и главному корпусу.', features: 'Пост охраны|Въезд к парковке|Пеший маршрут по территории', href: 'kontakty.html', link: 'Как добраться', x: 225, y: 520 },
+  { n: 5, cat: 'service', title: 'Парковка', meta: 'Рядом с главным корпусом', text: 'Основная парковочная зона комплекса. Подходит для легковых машин и автобусов спортивных команд.', features: 'Легковые автомобили|Места для автобусов|Короткий путь до ресепшн', href: 'kontakty.html', link: 'Адрес и маршрут', x: 390, y: 355 },
+  { n: 6, cat: 'food event', title: 'Гриль-бар «Овертайм»', meta: 'Еда и банкеты', text: 'Отдельный гриль-бар в зелёной части территории. Здесь можно поесть, забронировать стол или обсудить банкетное меню.', features: 'Гриль-меню|Зал до 40 гостей|Банкетное обслуживание|Бронь столов', href: 'meropriyatiya.html', link: 'Мероприятия и меню', x: 195, y: 260 },
+  { n: 7, cat: 'stay family', title: 'Коттеджи', meta: 'Отдых отдельной компанией', text: 'Два дома из оцилиндрованного бревна в тихой части комплекса. Подходят для большой семьи или компании друзей.', features: 'До 15 гостей|10–12 спальных мест|Три спальни|Мини-кухня|Терраса с мангалом', href: 'prozhivanie.html', link: 'Коттеджи и цены', x: 215, y: 165 },
+  { n: 8, cat: 'event family', title: 'Большая беседка', meta: 'Площадка до 50 гостей', text: 'Большая крытая беседка для праздников и встреч на свежем воздухе. Находится рядом с гриль-баром.', features: 'До 50 гостей|Мебель|Освещение|Крытая площадка', href: 'meropriyatiya.html', link: 'Все площадки', x: 280, y: 300 },
+  { n: 9, cat: 'sport spa', title: 'Спортивная зона', meta: 'Бассейн, фитнес и SPA', text: 'Крупная крытая спортивная зона за главным корпусом. Здесь собраны водные, силовые и восстановительные направления.', features: 'Бассейн 25 м|Тренажёрный зал|Зал единоборств|Хоккейный тир|Велокласс|SPA-услуги', href: 'bassein.html', link: 'Бассейн и SPA', x: 845, y: 210 },
+  { n: 10, cat: 'sport', title: 'Футбольное поле', meta: 'Открытая спортивная площадка', text: 'Поле с искусственным покрытием рядом со спортивной зоной. Используется для тренировок и сборов.', features: 'Искусственная трава|Размер 40 × 20 м|Почасовая аренда', href: 'sport.html', link: 'Спортивные площадки', x: 930, y: 245 },
+  { n: 11, cat: 'sport', title: 'Волейбольная площадка', meta: 'Открытая спортивная площадка', text: 'Отдельная площадка для волейбола в восточной части территории.', features: 'Размер 18 × 9 м|Искусственное покрытие|Почасовая аренда', href: 'sport.html', link: 'Спортивные площадки', x: 1050, y: 300 },
+  { n: 12, cat: 'sport event', title: 'Пейнтбол и лазертаг', meta: 'Лесная игровая зона', text: 'Отдельная лесная территория для командных игр и корпоративных программ.', features: 'Пейнтбол|Лазертаг|Командные сценарии|Лесная площадка', href: 'meropriyatiya.html', link: 'Программы для команд', x: 875, y: 82 },
+  { n: 13, cat: 'event food', title: 'Шатёр', meta: 'Площадка до 100 гостей', text: 'Крупная крытая площадка в центре территории. Подходит для свадеб, корпоративов и больших семейных праздников.', features: 'До 100 гостей|Мебель|Бетонный пол|Банкетное обслуживание', href: 'meropriyatiya.html', link: 'Шатёр и другие площадки', x: 675, y: 420 },
+  { n: 14, cat: 'family', title: 'Детский городок', meta: 'Игровая зона на улице', text: 'Открытая площадка для детей рядом с шатром и спортивными площадками.', features: 'Горки|Игровые элементы|Уличная зона', href: 'meropriyatiya.html', link: 'Детские праздники', x: 770, y: 455 },
+  { n: 15, cat: 'sport', title: 'Стритбол', meta: 'Открытая спортивная площадка', text: 'Асфальтовая площадка для уличного баскетбола в южной части комплекса.', features: 'Площадка 30 × 30 м|Асфальтовое покрытие|Почасовая аренда', href: 'sport.html', link: 'Спортивные площадки', x: 920, y: 455 },
+  ...[16,17,18,19].map((n, i) => ({ n, cat: 'event family', title: `Беседка №${i + 2}`, meta: 'Отдых у воды', text: 'Отдельная беседка в южной части территории. Подходит для небольшой компании и семейного отдыха.', features: 'До 10 гостей|Мангал|Освещение|Рядом с берегом', href: 'meropriyatiya.html', link: 'Беседки и цены', x: 600 + i * 82, y: 540 + i * 18 })),
+  { n: 20, cat: 'spa stay family', title: 'Бани', meta: 'Три отдельных дома', text: 'Банная зона в лесной части комплекса. Каждая баня имеет свою парную и комнату отдыха.', features: '«Деревенька»|«Охотничья»|«Легенды хоккея»|Парные и зоны отдыха', href: 'prozhivanie.html', link: 'Бани и цены', x: 235, y: 405 },
+  { n: 21, cat: 'family event', title: 'Пляж', meta: 'Берег водохранилища', text: 'Береговая зона на западной границе комплекса. Отсюда открывается вид на Верхне-Макаровское водохранилище.', features: 'Береговая зона|Вид на водохранилище|Рядом с лесом', href: 'meropriyatiya.html', link: 'Площадки у воды', x: 85, y: 120 },
 ];
 
 const mapGraphic = interactive => `<svg class="tmap-svg" viewBox="0 0 1200 680" role="img" aria-label="Схема территории спортивного комплекса Курганово">
@@ -174,7 +169,10 @@ const mapGraphic = interactive => `<svg class="tmap-svg" viewBox="0 0 1200 680" 
   </g>
   <g class="map-fields"><rect x="954" y="170" width="191" height="108" rx="10"/><rect x="1010" y="290" width="130" height="65" rx="8"/><rect x="864" y="430" width="145" height="72" rx="8"/><path d="M990 185v78M969 224h160M1024 185v78M1075 185v78M1110 185v78"/></g>
   <g class="map-small"><path d="M164 115l52 10 24 36-18 45-70-14-16-39z"/><rect x="145" y="224" width="82" height="55" rx="8"/><path d="M238 266l92 14-11 62-91-14z"/><path d="M176 367l128 18-11 69-127-18z"/>${[0,1,2,3].map(i => `<path d="M${565+i*82} ${520+i*18}l28-18 28 18v38h-56z"/>`).join('')}</g>
-  ${mapSpots.map((s, i) => `<g class="map-pin${i === 0 ? ' active' : ''}" data-map-pin data-n="${s.n}" data-cat="${s.cat}" data-title="${esc(s.title)}" data-text="${esc(s.text)}" transform="translate(${s.x} ${s.y})"${interactive ? ` role="button" tabindex="0" aria-label="${s.n}. ${esc(s.title)}"` : ''}><circle r="24"/><text y="1">${s.n}</text></g>`).join('')}
+  <g class="map-labels" aria-hidden="true"><text x="46" y="340" transform="rotate(-88 46 340)">ВЕРХНЕ-МАКАРОВСКОЕ ВОДОХРАНИЛИЩЕ</text><text x="945" y="45">СОСНОВЫЙ ЛЕС</text><text x="172" y="586">ВЪЕЗД</text><path d="M190 565l28-28"/><path d="M211 538h9v9"/></g>
+  <g class="map-compass" aria-hidden="true" transform="translate(1125 75)"><circle r="31"/><path d="M0-22L8 7 0 3-8 7Z"/><text y="22">С</text></g>
+  <path class="map-route" data-map-route d=""/>
+  ${mapSpots.map((s, i) => `<g class="map-pin${i === 0 ? ' active' : ''}" data-map-pin data-n="${s.n}" data-cat="${s.cat}" data-title="${esc(s.title)}" data-meta="${esc(s.meta)}" data-features="${esc(s.features)}" data-href="${s.href}" data-link="${esc(s.link)}" data-x="${s.x}" data-y="${s.y}" transform="translate(${s.x} ${s.y})"${interactive ? ` role="button" tabindex="0" aria-label="${s.n}. ${esc(s.title)}"` : ''}><circle r="24"/><text y="1">${s.n}</text></g>`).join('')}
 </svg>`;
 
 const planBlock = () => `<section class="sec bg2" id="plan">
@@ -187,7 +185,7 @@ const planBlock = () => `<section class="sec bg2" id="plan">
 const territoryPage = `${lhero({ crumb: 'Территория', h1: 'Всё Курганово на одной карте', lead: 'Выберите объект на схеме, чтобы узнать, что находится внутри или рядом.' })}
 <section class="sec map-page"><div class="wrap">
   <div class="map-filters" aria-label="Фильтры карты"><button class="chip" data-map-filter="all" aria-pressed="true">Всё</button><button class="chip" data-map-filter="stay">Проживание</button><button class="chip" data-map-filter="sport">Спорт</button><button class="chip" data-map-filter="event">Мероприятия</button><button class="chip" data-map-filter="spa">SPA</button><button class="chip" data-map-filter="family">Для семьи</button></div>
-  <div class="tmap-layout" data-territory-map><div class="tmap-canvas">${mapGraphic(true)}</div><aside class="map-detail" aria-live="polite"><span class="map-detail-num">1</span><p class="kicker">Объект на карте</p><h2 data-map-title>${mapSpots[0].title}</h2><p data-map-text>${mapSpots[0].text}</p><a class="link" href="kontakty.html">Как добраться</a></aside></div>
+  <div class="tmap-layout" data-territory-map><div class="tmap-canvas"><div class="map-tools" aria-label="Управление картой"><button type="button" data-map-zoom="out" aria-label="Уменьшить">−</button><button type="button" data-map-zoom="reset" aria-label="Исходный масштаб">100%</button><button type="button" data-map-zoom="in" aria-label="Увеличить">+</button><button type="button" class="map-route-toggle" data-map-route-toggle aria-pressed="false">Маршрут от въезда</button></div>${mapGraphic(true)}</div><aside class="map-detail" aria-live="polite"><span class="map-detail-num">1</span><p class="kicker">Объект на карте</p><p class="map-detail-meta" data-map-meta>${mapSpots[0].meta}</p><h2 data-map-title>${mapSpots[0].title}</h2><p data-map-text>${mapSpots[0].text}</p><ul class="map-detail-features" data-map-features>${mapSpots[0].features.split('|').map(x => `<li>${esc(x)}</li>`).join('')}</ul><a class="link" data-map-link href="${mapSpots[0].href}">${mapSpots[0].link}</a></aside></div>
   <div class="map-index">${mapSpots.map(s => `<button data-map-list data-n="${s.n}"><b>${s.n}</b><span>${esc(s.title)}</span></button>`).join('')}</div>
 </div></section>${cta('Нужна помощь с маршрутом по комплексу?')}`;
 
@@ -223,7 +221,7 @@ page('index.html', {
   title: 'Курганово – спортивный комплекс и база отдыха на Полевском тракте',
   desc: 'Две ледовые арены, бассейн 25 м, гостиница, бани и площадки для праздников на берегу Верхне-Макаровского водохранилища.',
 }, `<section class="hero">
-  ${photo('hero-facade-v2', 'Главный корпус спортивного комплекса «Курганово»', { eager: true, cls: 'hero-img', pos: '58% 50%' })}
+  ${photo('hero-facade-v3', 'Главный корпус спортивного комплекса «Курганово»', { eager: true, cls: 'hero-img', pos: '58% 50%' })}
   <div class="wrap">
     <div class="hero-panel">
       <p class="kicker">Спорт и отдых у воды</p>
@@ -293,7 +291,7 @@ page('index.html', {
 ${planBlock()}
 
 <section class="sec-tight clients">
-  <div class="wrap"><p class="kicker">Среди клиентов комплекса</p></div>
+  <div class="wrap"><p class="kicker">Наши клиенты и партнёры</p></div>
   <div class="marquee" aria-label="Клиенты: ${esc(clients.join(', '))}"><div class="marquee-track" aria-hidden="true">${[...clients, ...clients].map(c => `<span>${esc(c)}</span>`).join('')}</div></div>
 </section>
 
