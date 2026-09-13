@@ -54,13 +54,13 @@ const head = ({ title, desc, file }) => `<!doctype html>
 <meta property="og:description" content="${esc(desc)}">
 <meta property="og:image" content="${BASE}assets/img/og.jpg">
 <meta name="theme-color" content="#176b5b">
-<link rel="icon" href="assets/favicon.ico" sizes="16x16">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="preload" href="assets/fonts/onest-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/site.css?v=${V}">
 <script>document.documentElement.classList.add('js');if(/[?&]still/.test(location.search))document.documentElement.classList.add('still')</script>
 </head>`;
 
-const logo = () => `<a class="logo" href="index.html" aria-label="Курганово, на главную"><img class="logo-mark" src="assets/favicon.ico" alt=""><span class="logo-t"><small>спортивный комплекс</small><b>Курганово</b></span></a>`;
+const logo = () => `<a class="logo" href="index.html" aria-label="Курганово, на главную"><img class="logo-mark" src="assets/favicon.svg" alt=""><span class="logo-t"><small>спортивный комплекс</small><b>Курганово</b></span></a>`;
 
 const header = file => `<div class="progress" aria-hidden="true"></div>
 <div class="proto">Прототип нового сайта. Тексты, цены и фото взяты с kurganovo.com 13.09.2026</div>

@@ -1,1 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120"><g fill="none" stroke-width="13"><path d="M12 120A108 108 0 0 1 120 12" stroke="#d42be0"/><path d="M27 120A93 93 0 0 1 120 27" stroke="#2447d6"/><path d="M42 120A78 78 0 0 1 120 42" stroke="#5ab52f"/><path d="M57 120A63 63 0 0 1 120 57" stroke="#b9e23c"/><path d="M72 120A48 48 0 0 1 120 72" stroke="#f6df3f"/></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="Знак Курганово">
+  <defs>
+    <linearGradient id="top" x1="25" y1="86" x2="91" y2="35" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#183760"/><stop offset=".46" stop-color="#773380"/><stop offset=".78" stop-color="#d22b88"/><stop offset="1" stop-color="#168fbd"/></linearGradient>
+    <linearGradient id="bottom" x1="24" y1="88" x2="91" y2="105" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffe400"/><stop offset=".34" stop-color="#b7d800"/><stop offset=".58" stop-color="#28aa57"/><stop offset=".8" stop-color="#d62a86"/><stop offset="1" stop-color="#a51b6f"/></linearGradient>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="2" stdDeviation="2" flood-opacity=".12"/></filter>
+  </defs>
+  <circle cx="64" cy="64" r="60" fill="#f3f3f3"/>
+  <g filter="url(#soft)"><path d="M28 83 78 38l17 6-42 39Z" fill="url(#top)"/><path d="M28 83h25l43 31H67Z" fill="url(#bottom)"/><path d="m28 83 15-14 10 14-10 15Z" fill="#d7dc00" opacity=".78"/></g>
+</svg>
