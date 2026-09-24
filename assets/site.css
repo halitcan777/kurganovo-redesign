@@ -429,7 +429,7 @@ h3{font-size:22px;line-height:1.2;font-weight:600}
   .map-index{grid-template-columns:repeat(3,minmax(0,1fr))}
 }
 @media(max-width:680px){
-  .wrap{padding-inline:16px}
+  .wrap{padding-inline:20px}
   .sec{padding-block:56px}
   .sec-tight{padding-block:48px}
   .sec-head{margin-bottom:32px}
@@ -460,7 +460,7 @@ h3{font-size:22px;line-height:1.2;font-weight:600}
   .lad-top .lad-num{font-size:36px}
   .ladder li.lad-top{padding:20px}
   .gallery{grid-template-columns:1fr}
-  .pnav{margin-inline:-16px;padding-inline:16px}
+  .pnav{margin-inline:-20px;padding-inline:20px}
   .pblock h2{font-size:28px}
   .event-price-groups{gap:16px}.event-price-groups .pblock,.event-price-groups .pblock:first-child{padding:22px 16px}
   .ptable thead{display:none}
@@ -476,7 +476,7 @@ h3{font-size:22px;line-height:1.2;font-weight:600}
   .collage{grid-template-columns:1fr;grid-template-rows:none;aspect-ratio:auto;gap:16px}
   .collage .c1,.collage .c2{grid-column:auto;grid-row:auto;aspect-ratio:4/3;outline:0}
   .map-preview{padding:6px;border-radius:12px}.map-preview .btn{position:static;width:100%;margin-top:8px;white-space:normal;text-align:center}
-  .tmap-canvas{margin-inline:-16px;padding:4px;border-radius:0;border-inline:0;overflow-x:auto}.tmap-svg{min-width:760px}.map-tools{position:sticky;left:12px;top:10px;width:max-content;margin-bottom:-50px}.map-tools .map-route-toggle{font-size:12px;padding-inline:9px}
+  .tmap-canvas{margin-inline:-20px;padding:4px;border-radius:0;border-inline:0;overflow-x:auto}.tmap-canvas .tmap-svg{min-width:760px}.map-tools{position:sticky;left:12px;top:10px;width:max-content;margin-bottom:-50px}.map-tools .map-route-toggle{font-size:12px;padding-inline:9px}
   .map-index{grid-template-columns:1fr 1fr}.map-index button{padding:9px}.map-index span{font-size:13px}
   .ftr-main{grid-template-columns:1fr;gap:34px}
   .ftr-bot{grid-template-columns:1fr}.ftr-bot span:last-child{text-align:left}
@@ -570,3 +570,15 @@ h3{font-size:22px;line-height:1.2;font-weight:600}
 .hero-panel .hero-lead{margin-top:16px;font-size:17px}
 .hero-panel .hero-cta{margin-top:24px}
 @media(max-width:760px){.hero-panel{padding:20px}.hero-panel h1{font-size:30px}.hero-panel .hero-lead{font-size:16px}}
+
+/* Телефон */
+@media(max-width:680px){
+  .map-preview{padding:8px;overflow:hidden}
+  .map-preview .tmap-svg{display:block;width:640px;max-width:none;margin-left:calc((100% - 640px) / 2)}
+  .map-preview .btn{position:static;display:flex;width:100%;margin-top:8px}
+  .hero{min-height:0}
+  .hero .wrap{padding-block:96px 40px}
+  .ftr-col a{padding-block:8px}
+  .ftr-ph{gap:14px}
+  .ftr-ph a{padding-block:4px}
+}

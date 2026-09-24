@@ -131,6 +131,8 @@
     const meta = tm.querySelector('[data-map-meta]');
     const features = tm.querySelector('[data-map-features]');
     const action = tm.querySelector('[data-map-link]');
+    const cv = tm.querySelector('.tmap-canvas');
+    if (cv && cv.scrollWidth > cv.clientWidth) cv.scrollLeft = (cv.scrollWidth - cv.clientWidth) / 2;
     const route = tm.querySelector('[data-map-route]');
     const routeToggle = tm.querySelector('[data-map-route-toggle]');
     const svg = tm.querySelector('.tmap-svg');

@@ -302,7 +302,7 @@ ${planBlock()}
 
 <section class="clients">
   <div class="wrap clients-in">
-    <p class="clients-k">Клиенты<br>и партнёры</p>
+    <p class="clients-k">Клиенты <br>и партнёры</p>
     <div class="marquee" role="region" aria-label="Клиенты: ${esc(clients.join(', '))}"><div class="marquee-track" aria-hidden="true">${[...clients, ...clients].map(c => `<span>${esc(c)}</span>`).join('')}</div></div>
   </div>
 </section>
