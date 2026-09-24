@@ -14,10 +14,10 @@
 
 :root{
   --brand:#2a8a52; --brand-dk:#1f6e40; --brand-tint:#e8f5ec;
-  --navy:#1f4a34; --navy2:#2a5c42;
+  --navy:#3a7d3b; --navy2:#468c47;
   --ink:#18211c; --ink2:#3f4c45; --ink3:#6c7870; --ink4:#9ca69f; --ink-inv:#cddbd2;
   --line:#dfe7e1; --line-inv:rgba(255,255,255,.16); --bg:#fff; --bg2:#f3f2ed;
-  --accent:#a8e2bc;
+  --accent:#d6f5c8;
   --r1:4px; --r2:8px; --r3:12px;
   --gut:24px; --maxw:1280px; --hdr:72px;
   --f-head:'Onest',system-ui,sans-serif;
@@ -52,7 +52,7 @@ h3{font-size:22px;line-height:1.2;font-weight:600}
 /* кнопки */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 24px;border:0;border-radius:var(--r2);background:var(--brand);color:#fff;font:600 16px/1.2 var(--f-body);transition:background-color .2s ease,color .2s ease;white-space:nowrap}
 .btn:hover{background:var(--brand-dk)}
-.btn-accent{background:var(--accent);color:var(--navy)} .btn-accent:hover{background:#c2ecd0;color:var(--navy)}
+.btn-accent{background:var(--accent);color:var(--navy)} .btn-accent:hover{background:#fff;color:var(--navy)}
 .btn-light{background:#fff;color:var(--brand)} .btn-light:hover{background:var(--brand-tint)}
 .btn-ghost{background:rgba(255,255,255,.12);color:#fff} .btn-ghost:hover{background:rgba(255,255,255,.22)}
 .btn-tint{background:var(--brand-tint);color:var(--brand)} .btn-tint:hover{background:#d5ecdd}
