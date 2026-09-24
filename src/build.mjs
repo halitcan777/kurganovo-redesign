@@ -148,9 +148,9 @@ const mapSpots = [
 ];
 
 const mapGraphic = interactive => `<svg class="tmap-svg" viewBox="0 0 1200 680" role="img" aria-label="Схема территории спортивного комплекса Курганово">
-  <defs><pattern id="trees" width="48" height="48" patternUnits="userSpaceOnUse"><circle cx="12" cy="16" r="10" fill="#8da58b"/><circle cx="29" cy="32" r="14" fill="#718d70"/><circle cx="43" cy="11" r="8" fill="#a8b99a"/></pattern><pattern id="parking" width="22" height="22" patternUnits="userSpaceOnUse" patternTransform="rotate(22)"><path d="M0 2h22" stroke="#fff" stroke-width="3" opacity=".75"/></pattern></defs>
-  <rect width="1200" height="680" rx="28" fill="#dfe6d6"/>
-  <path d="M0 0H155L138 680H0Z" fill="#b9d4cf"/><path d="M0 58H152M0 105H148M0 152H145" stroke="#fff" stroke-opacity=".6" stroke-width="3"/>
+  <defs><pattern id="trees" width="48" height="48" patternUnits="userSpaceOnUse"><circle cx="12" cy="16" r="10" fill="#2a8a52" fill-opacity=".35"/><circle cx="29" cy="32" r="14" fill="#2a8a52" fill-opacity=".5"/><circle cx="43" cy="11" r="8" fill="#2a8a52" fill-opacity=".22"/></pattern><pattern id="parking" width="22" height="22" patternUnits="userSpaceOnUse" patternTransform="rotate(22)"><path d="M0 2h22" stroke="#fff" stroke-width="3" opacity=".75"/></pattern></defs>
+  <rect width="1200" height="680" rx="28" fill="#e3eedc"/>
+  <path d="M0 0H155L138 680H0Z" fill="#2a8a52" fill-opacity=".14"/><path d="M0 58H152M0 105H148M0 152H145" stroke="#fff" stroke-opacity=".6" stroke-width="3"/>
   <path d="M25 180L205 190 170 650 25 660ZM770 10L1180 14 1175 192 825 165ZM985 500L1200 470V680H1030Z" fill="url(#trees)" opacity=".92"/>
   <g class="map-roads"><path d="M155 680C165 555 258 470 380 415C455 380 475 330 500 245L540 0"/><path d="M335 420C485 395 565 367 700 365H1200"/><path d="M420 286C585 315 725 340 860 357"/></g>
   <path class="map-parking" d="M300 295L466 319 438 397 270 374Z" fill="url(#parking)"/>
@@ -255,7 +255,7 @@ page('index.html', {
   </div>
 </section>
 
-<section class="sec bg2">
+<section class="sec">
   <div class="wrap">
     <div class="sec-head rv"><h2>С чем к нам обычно едут</h2><p>Три частых запроса и сколько стоит каждая часть. ${PRICE_NOTE}</p></div>
     <div class="g">${scenarios.map(s => `<article class="card s4 rv"><h3>${s.t}</h3>${plist(s.items)}<a class="link" href="${s.href}">${s.more}</a></article>`).join('')}</div>
