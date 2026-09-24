@@ -1,5 +1,5 @@
 // Сборка прототипа «Курганово»: node src/build.mjs → *.html в корне сайта
-import { writeFileSync } from 'node:fs';
+import { writeFileSync, readFileSync, existsSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { site, nav, phones, clients, docs, territory, prices, rooms, poolSessions } from './data.mjs';
@@ -13,6 +13,10 @@ const V = Date.now().toString(36);
 const esc = s => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const ic = (name, cls = '') => `<svg class="ic${cls ? ' ' + cls : ''}" viewBox="0 0 24 24" aria-hidden="true">${icons[name]}</svg>`;
 const P = Object.fromEntries(prices.map(p => [p.id, p]));
+const LQIP = existsSync(join(dirname(fileURLToPath(import.meta.url)), 'lqip.json')) ? JSON.parse(readFileSync(join(dirname(fileURLToPath(import.meta.url)), 'lqip.json'), 'utf8')) : {};
+const heroImg = (name, alt, pos = '') =>
+  `<img src="assets/img/${name}.webp" srcset="assets/img/${name}-900.webp 900w, assets/img/${name}.webp 1672w" sizes="100vw" alt="${esc(alt)}" class="hero-img"${pos ? ` style="object-position:${pos}"` : ''} fetchpriority="high">`;
+const lq = name => LQIP[name] ? ` style="background-image:url(${LQIP[name]})"` : '';
 const photo = (name, alt, { eager = false, cls = '', pos = '' } = {}) =>
   `<img src="assets/img/${name}.webp" alt="${esc(alt)}"${cls ? ` class="${cls}"` : ''}${pos ? ` style="object-position:${pos}"` : ''}${eager ? ' fetchpriority="high"' : ' loading="lazy"'} decoding="async">`;
 const slot = (label, cls = 'ar43') => `<div class="ph imgph ${cls}"><span>${esc(label)}</span></div>`;
@@ -85,7 +89,7 @@ const form = topic => `<form class="form" data-demo novalidate>
   <h3>Оставить заявку</h3>
   <p class="form-sub">Администратор перезвонит и уточнит детали.</p>
   <div class="row2"><label>Имя<input name="name" autocomplete="name"></label><label>Телефон<input name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="+7"></label></div>
-  <div class="row2"><label>Что планируете<select name="topic">${TOPICS.map(t => `<option${t === topic ? ' selected' : ''}>${t}</option>`).join('')}</select></label><label>Дата<input name="date" type="date"></label></div>
+  <div class="row2"><label>Что планируете<select name="topic">${TOPICS.map(t => `<option${t === topic ? ' selected' : ''}>${t}</option>`).join('')}</select></label><label>Даты<input name="date" placeholder="Например, 12–14 октября" autocomplete="off"></label></div>
   <label>Комментарий<textarea name="msg" placeholder="Сколько гостей и какие услуги нужны"></textarea></label>
   <button class="btn" type="submit">${ic('send')}Отправить заявку</button>
   <p class="consent">Нажимая кнопку, вы соглашаетесь с <a href="${privacy}" target="_blank" rel="noopener">политикой обработки персональных данных</a>.</p>
@@ -107,13 +111,14 @@ const cta = (title, topic = '') => `<section class="sec cta" id="zayavka">
   </div>
 </section>`;
 
-const phero = ({ crumb, kicker, h1, lead, image, alt, pos }) => `<section class="phero">
-  ${photo(image, alt, { eager: true, cls: 'hero-img', pos })}
+const phero = ({ crumb, kicker, h1, lead, image, alt, pos, extra = '' }) => `<section class="phero"${lq(image)}>
+  ${heroImg(image, alt, pos)}
   <div class="wrap">
     <nav class="crumbs" aria-label="Навигация"><a href="index.html">Главная</a><span>/</span><span>${crumb}</span></nav>
     ${kicker ? `<p class="kicker">${kicker}</p>` : ''}
     <h1>${h1}</h1>
     <p class="hero-lead">${lead}</p>
+    ${extra}
   </div>
 </section>`;
 
@@ -176,14 +181,15 @@ const planBlock = () => `<section class="sec bg2" id="plan">
   </div>
 </section>`;
 
-const territoryPage = `${lhero({ crumb: 'Территория', h1: 'Всё Курганово на одной карте', lead: 'Выберите объект на схеме, чтобы узнать, что находится внутри или рядом.' })}
+const territoryPage = `${phero({ crumb: 'Территория', image: 'besedki', alt: 'Беседки с мангалами на территории комплекса', h1: 'Всё Курганово на одной карте', lead: 'Выберите объект на схеме, чтобы узнать, что находится внутри или рядом.' })}
 <section class="sec map-page"><div class="wrap">
   <div class="map-filters" aria-label="Фильтры карты"><button class="chip" data-map-filter="all" aria-pressed="true">Всё</button><button class="chip" data-map-filter="stay">Проживание</button><button class="chip" data-map-filter="sport">Спорт</button><button class="chip" data-map-filter="event">Мероприятия</button><button class="chip" data-map-filter="spa">SPA</button><button class="chip" data-map-filter="family">Для семьи</button></div>
   <div class="tmap-layout" data-territory-map><div class="tmap-canvas"><div class="map-tools" aria-label="Управление картой"><button type="button" data-map-zoom="out" aria-label="Уменьшить">−</button><button type="button" data-map-zoom="reset" aria-label="Исходный масштаб">100%</button><button type="button" data-map-zoom="in" aria-label="Увеличить">+</button><button type="button" class="map-route-toggle" data-map-route-toggle aria-pressed="false">Маршрут от въезда</button></div>${mapGraphic(true)}</div><aside class="map-detail" aria-live="polite"><span class="map-detail-num">1</span><p class="kicker">Объект на карте</p><p class="map-detail-meta" data-map-meta>${mapSpots[0].meta}</p><h2 data-map-title>${mapSpots[0].title}</h2><p data-map-text>${mapSpots[0].text}</p><ul class="map-detail-features" data-map-features>${mapSpots[0].features.split('|').map(x => `<li>${esc(x)}</li>`).join('')}</ul><a class="link" data-map-link href="${mapSpots[0].href}">${mapSpots[0].link}</a></aside></div>
   <div class="map-index">${mapSpots.map(s => `<button data-map-list data-n="${s.n}"><b>${s.n}</b><span>${esc(s.title)}</span></button>`).join('')}</div>
 </div></section>${cta('Нужна помощь с маршрутом по комплексу?')}`;
 
-const page = (file, meta, body) => writeFileSync(join(ROOT, file), `${head({ ...meta, file })}
+const heroPreload = body => { const m = body.match(/<img src="(assets\/img\/[^"]+)" srcset="([^"]+)" sizes="100vw"[^>]*class="hero-img"/); return m ? `<link rel="preload" as="image" href="${m[1]}" imagesrcset="${m[2]}" imagesizes="100vw" fetchpriority="high">\n` : ''; };
+const page = (file, meta, body) => writeFileSync(join(ROOT, file), `${head({ ...meta, file }).replace('<link rel="stylesheet"', heroPreload(body) + '<link rel="stylesheet"')}
 <body>
 ${header(file)}
 <main>
@@ -214,8 +220,8 @@ const scenarios = [
 page('index.html', {
   title: 'Курганово – спортивный комплекс и база отдыха на Полевском тракте',
   desc: 'Две ледовые арены, бассейн 25 м, гостиница, бани и площадки для праздников на берегу Верхне-Макаровского водохранилища.',
-}, `<section class="hero">
-  ${photo('hero-facade-v3', 'Главный корпус спортивного комплекса «Курганово»', { eager: true, cls: 'hero-img', pos: '58% 50%' })}
+}, `<section class="hero"${lq('hero-facade-v3')}>
+  ${heroImg('hero-facade-v3', 'Главный корпус спортивного комплекса «Курганово»', '58% 50%')}
   <div class="wrap">
     <div class="hero-panel">
       <p class="kicker">Спорт и отдых у воды</p>
@@ -535,7 +541,7 @@ const groups = [
 page('ceny.html', {
   title: 'Цены – Курганово',
   desc: 'Все 16 прайсов спортивного комплекса «Курганово» текстом: номера, бани, лёд, залы, бассейн, мероприятия.',
-}, `${lhero({ crumb: 'Цены', h1: 'Цены', lead: 'Все 16 прайсов комплекса текстом, без картинок. Их удобно искать и читать с телефона.', extra: `<p class="validity">${ic('info')}<span>Прайсы действовали с 1 февраля по 31 августа 2026 года. Новые цены уточняйте у администратора: <a class="link" href="${site.phoneHref}">${site.phoneShort}</a>.</span></p>` })}
+}, `${phero({ crumb: 'Цены', image: 'facade', alt: 'Главный корпус комплекса «Курганово»', h1: 'Цены', lead: 'Все 16 прайсов комплекса текстом, без картинок. Их удобно искать и читать с телефона.', extra: `<p class="validity">${ic('info')}<span>Прайсы действовали с 1 февраля по 31 августа 2026 года. Новые цены уточняйте у администратора: <a class="link" href="${site.phoneHref}">${site.phoneShort}</a>.</span></p>` })}
 
 <section class="sec">
   <div class="wrap g">
@@ -550,7 +556,7 @@ ${cta('Не нашли услугу? Позвоните, администрат�
 page('kontakty.html', {
   title: 'Контакты и как добраться – Курганово',
   desc: 'Свердловская обл., с. Курганово, ул. Береговая, 2А. 30-й км Полевского тракта. Администратор круглосуточно: 282-90-10.',
-}, `${lhero({ crumb: 'Контакты', h1: 'Как добраться и куда звонить', lead: `${esc(site.address)}. ${esc(site.addressNote)}.` })}
+}, `${phero({ crumb: 'Контакты', image: 'lake', alt: 'Берег Верхне-Макаровского водохранилища', h1: 'Как добраться и куда звонить', lead: `${esc(site.address)}. ${esc(site.addressNote)}.` })}
 
 <section class="sec">
   <div class="wrap g">
