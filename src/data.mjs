@@ -14,6 +14,9 @@ export const site = {
   mapWidget: 'https://yandex.ru/map-widget/v1/org/kurganovo/1104910295/',
   mapUrl: 'https://yandex.ru/maps/org/kurganovo/1104910295/',
   vk: 'https://vk.com/kurganovosk',
+  // Мессенджеры для заявок: заполнить, когда заказчик даст контакты — кнопки появятся рядом с телефоном.
+  telegram: '', // например 'https://t.me/kurganovo'
+  whatsapp: '', // например 'https://wa.me/73432829010'
   priceValid: '01.02–31.08.2026',
 };
 

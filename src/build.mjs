@@ -17,8 +17,9 @@ const LQIP = existsSync(join(dirname(fileURLToPath(import.meta.url)), 'lqip.json
 const heroImg = (name, alt, pos = '') =>
   `<img src="assets/img/${name}.webp" srcset="assets/img/${name}-900.webp 900w, assets/img/${name}.webp 1672w" sizes="100vw" alt="${esc(alt)}" class="hero-img"${pos ? ` style="object-position:${pos}"` : ''} fetchpriority="high">`;
 const lq = name => LQIP[name] ? ` style="background-image:url(${LQIP[name]})"` : '';
+const w900 = name => existsSync(join(ROOT, 'assets', 'img', `${name}-900.webp`));
 const photo = (name, alt, { eager = false, cls = '', pos = '' } = {}) =>
-  `<img src="assets/img/${name}.webp" alt="${esc(alt)}"${cls ? ` class="${cls}"` : ''}${pos ? ` style="object-position:${pos}"` : ''}${eager ? ' fetchpriority="high"' : ' loading="lazy"'} decoding="async">`;
+  `<img src="assets/img/${name}.webp"${w900(name) ? ` srcset="assets/img/${name}-900.webp 900w, assets/img/${name}.webp 1600w" sizes="(max-width: 760px) 100vw, 50vw"` : ''} alt="${esc(alt)}"${cls ? ` class="${cls}"` : ''}${pos ? ` style="object-position:${pos}"` : ''}${eager ? ' fetchpriority="high"' : ' loading="lazy"'} decoding="async">`;
 const slot = (label, cls = 'ar43') => `<div class="ph imgph ${cls}"><span>${esc(label)}</span></div>`;
 const checks = items => `<ul class="facts">${items.map(t => `<li>${ic('check')}<span>${t}</span></li>`).join('')}</ul>`;
 const plist = items => `<ul class="plist">${items.map(([a, b]) => `<li><span>${a}</span><span>${b}</span></li>`).join('')}</ul>`;
@@ -61,7 +62,6 @@ const head = ({ title, desc, file }) => `<!doctype html>
 const wordmark = () => `<a class="wordmark" href="index.html" aria-label="Курганово, на главную"><small>спортивный комплекс</small><b>Курганово</b></a>`;
 
 const header = file => `<div class="progress" aria-hidden="true"></div>
-<div class="proto">Прототип нового сайта. Тексты, цены и фото взяты с kurganovo.com 13.09.2026</div>
 <header class="hdr">
   <div class="wrap hdr-in">
     ${wordmark()}
@@ -95,12 +95,15 @@ const form = topic => `<form class="form" data-demo novalidate>
   <p class="consent">Нажимая кнопку, вы соглашаетесь с <a href="${privacy}" target="_blank" rel="noopener">политикой обработки персональных данных</a>.</p>
 </form>`;
 
+const messengers = () => (site.telegram || site.whatsapp) ? `<div class="msg-row">${site.telegram ? `<a class="btn btn-tint" href="${site.telegram}" target="_blank" rel="noopener">${ic('send')}Telegram</a>` : ''}${site.whatsapp ? `<a class="btn btn-tint" href="${site.whatsapp}" target="_blank" rel="noopener">${ic('message-circle')}WhatsApp</a>` : ''}</div>` : '';
+
 const cta = (title, topic = '') => `<section class="sec cta" id="zayavka">
   <div class="wrap g">
     <div class="s6 rv">
       <p class="kicker">На связи круглосуточно</p>
       <h2>${title}</h2>
       <a class="cta-phone" href="${site.phoneHref}">${site.phone}</a>
+      ${messengers()}
       <ul class="cta-list">
         <li>${ic('map-pin')}<span>${esc(site.address)}, ${esc(site.addressNote)}</span></li>
         <li>${ic('car')}<span>На машине: по Полевскому тракту до села Курганово, дальше по указателям</span></li>
@@ -212,7 +215,7 @@ const tiles = [
   { href: 'bassein.html', t: 'Бассейн и SPA', p: '25 метров, три дорожки, сауна входит в сеанс. Тренажёрный зал, массаж, соляная сауна.', price: 'сеанс 480 ₽', image: 'pool-swim', alt: 'Пловец на дорожке бассейна', pos: '50% 60%' },
 ];
 const scenarios = [
-  { t: 'Сборы команды', items: [['Многоместный номер', '2 500 ₽ за место'], ['Аренда льда', '11 700 ₽ в час'], ['Зал игровых видов, 530 м²', '2 800 ₽ в час'], ['Табло и судейская аппаратура', '2 500 ₽ за игру'], ['Питание в столовой', 'по заявке']], href: 'sport.html', more: 'Всё о сборах' },
+  { t: 'Сборы команды', items: [['Многоместный номер', '2 500 ₽ за место'], ['Аренда льда', '11 700 ₽ в час'], ['Зал игровых видов, 530 м²', '2 800 ₽ в час'], ['Табло и судейская аппаратура', '2 500 ₽ за игру'], ['Питание в столовой', 'по заявке']], href: 'sport.html#sbory', more: 'Всё о сборах' },
   { t: 'Корпоратив на 100 гостей', items: [['Шатёр до 100 человек', '40 000 ₽'], ['Большая беседка до 50 человек', '25 000 ₽'], ['Квиз для компании, 100 минут', '42 000 ₽'], ['Конференц-зал на 60 мест', '1 800 ₽ в час'], ['Нахождение на территории', '170 ₽ с гостя']], href: 'meropriyatiya.html', more: 'Все площадки' },
   { t: 'Выходные с семьёй', items: [['Семейный номер-студия', '10 000 ₽ в сутки'], ['Баня «Деревенька»', 'от 2 500 ₽ в час'], ['Массовое катание', '300 ₽, детям 3–6 лет 200 ₽'], ['Бассейн', '480 ₽, детям 350 ₽'], ['Детская комната', '100 ₽ в час']], href: 'prozhivanie.html', more: 'Выбрать номер' },
 ];
@@ -297,9 +300,11 @@ ${planBlock()}
   </div>
 </section>
 
-<section class="sec-tight clients">
-  <div class="wrap"><p class="kicker">Наши клиенты и партнёры</p></div>
-  <div class="marquee" aria-label="Клиенты: ${esc(clients.join(', '))}"><div class="marquee-track" aria-hidden="true">${[...clients, ...clients].map(c => `<span>${esc(c)}</span>`).join('')}</div></div>
+<section class="clients">
+  <div class="wrap clients-in">
+    <p class="clients-k">Клиенты<br>и партнёры</p>
+    <div class="marquee" aria-label="Клиенты: ${esc(clients.join(', '))}"><div class="marquee-track" aria-hidden="true">${[...clients, ...clients].map(c => `<span>${esc(c)}</span>`).join('')}</div></div>
+  </div>
 </section>
 
 ${cta('Позвоните, и администратор подберёт номер, площадку или время на льду')}`);
@@ -393,11 +398,32 @@ page('sport.html', {
   </div>
 </section>
 
-<section class="sec dark">
+<section class="sec dark" id="sbory">
   <div class="wrap">
-    <div class="sec-head rv"><p class="kicker">Для спортивных команд</p><h2>Сборы: жильё, питание, лёд и залы на одной территории</h2></div>
+    <div class="sec-head rv"><p class="kicker">Сборы под ключ</p><h2>Жильё, питание, лёд и залы на одной территории</h2><p>Команде не нужно никуда ездить между тренировкой, столовой и номером. Территория охраняется.</p></div>
+    <ul class="sb-facts rv"><li><b>до 380</b><span>мест для размещения команд</span></li><li><b>15 км</b><span>от границы Екатеринбурга, рядом Кольцово</span></li><li><b>2 арены</b><span>и залы на 530 и 272 м²</span></li><li><b>Госреестр</b><span>площадки внесены в реестр объектов спорта</span></li></ul>
     <div class="feats rv">${feats.map(([i, t, p]) => `<div class="feat">${ic(i)}<h3>${t}</h3><p>${p}</p></div>`).join('')}</div>
-    <div class="feat-cta rv"><p>Для спортивных групп действует отдельный прайс. Его пришлёт отдел продаж под даты и состав команды.</p><a class="btn btn-light" href="tel:+73432829004">${ic('phone')}Отдел продаж: 282-90-04</a></div>
+    <div class="g sb-g">
+      <div class="s5 rv">
+        <h3 class="sb-h">Как проходит заказ</h3>
+        <ol class="sb-steps">
+          <li><b>Заявка</b><span>Вид спорта, состав команды с тренерами, даты и нужные площадки. Через форму или по телефону <a class="link" href="tel:+73432829004">282-90-04</a>.</span></li>
+          <li><b>Расчёт под ваши даты</b><span>Для спортивных групп действует отдельный прайс. Отдел продаж пришлёт расчёт по проживанию, питанию, льду и залам.</span></li>
+          <li><b>Расписание и заезд</b><span>Согласуем время на льду и в залах, меню и размещение. Питание можно собрать вплоть до индивидуального рациона.</span></li>
+        </ol>
+      </div>
+      <div class="s7 rv">
+        <form class="form" data-demo novalidate>
+          <h3>Заявка на сборы</h3>
+          <p class="form-sub">Отдел продаж пришлёт расчёт под даты и состав.</p>
+          <div class="row2"><label>Вид спорта<input name="sport" placeholder="Например, хоккей"></label><label>Сколько человек<input name="people" inputmode="numeric" placeholder="Спортсмены и тренеры"></label></div>
+          <div class="row2"><label>Даты<input name="date" placeholder="Например, 3–10 июля" autocomplete="off"></label><label>Телефон<input name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="+7"></label></div>
+          <fieldset class="opts"><legend>Что нужно</legend>${['Проживание', 'Питание', 'Лёд', 'Зал', 'Бассейн', 'Табло и судейство'].map(o => `<label class="opt"><input type="checkbox" name="need" value="${o}"${['Проживание', 'Питание'].includes(o) ? ' checked' : ''}><span>${o}</span></label>`).join('')}</fieldset>
+          <button class="btn" type="submit">${ic('send')}Запросить расчёт</button>
+          <p class="consent">Нажимая кнопку, вы соглашаетесь с <a href="${privacy}" target="_blank" rel="noopener">политикой обработки персональных данных</a>.</p>
+        </form>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -573,6 +599,7 @@ page('kontakty.html', {
         <p>Администратор гостиницы, круглосуточно</p>
         <a class="cta-phone" href="${site.phoneHref}">${site.phone}</a>
         <p style="margin-top:16px">Номера, коттеджи, бани и любые общие вопросы.</p>
+        ${messengers()}
       </div>
       <ul class="phones">${phones.slice(1).map(p => `<li><span>${esc(p.topic)}</span><a href="${p.href}">${p.num}</a><small>${esc(p.note)}</small></li>`).join('')}</ul>
     </div>
