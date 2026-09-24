@@ -15,7 +15,6 @@ const ic = (name, cls = '') => `<svg class="ic${cls ? ' ' + cls : ''}" viewBox="
 const P = Object.fromEntries(prices.map(p => [p.id, p]));
 const photo = (name, alt, { eager = false, cls = '', pos = '' } = {}) =>
   `<img src="assets/img/${name}.webp" alt="${esc(alt)}"${cls ? ` class="${cls}"` : ''}${pos ? ` style="object-position:${pos}"` : ''}${eager ? ' fetchpriority="high"' : ' loading="lazy"'} decoding="async">`;
-const stripe = '<span class="stripe" aria-hidden="true"><i></i></span>';
 const slot = (label, cls = 'ar43') => `<div class="ph imgph ${cls}"><span>${esc(label)}</span></div>`;
 const checks = items => `<ul class="facts">${items.map(t => `<li>${ic('check')}<span>${t}</span></li>`).join('')}</ul>`;
 const plist = items => `<ul class="plist">${items.map(([a, b]) => `<li><span>${a}</span><span>${b}</span></li>`).join('')}</ul>`;
@@ -49,7 +48,7 @@ const head = ({ title, desc, file }) => `<!doctype html>
 <meta property="og:title" content="${esc(title)}">
 <meta property="og:description" content="${esc(desc)}">
 <meta property="og:image" content="${BASE}assets/img/og.jpg">
-<meta name="theme-color" content="#176b5b">
+<meta name="theme-color" content="#2a8a52">
 <link rel="preload" href="assets/fonts/onest-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/site.css?v=${V}">
 <script>document.documentElement.classList.add('js');if(/[?&]still/.test(location.search))document.documentElement.classList.add('still')</script>
@@ -243,7 +242,6 @@ page('index.html', {
       <div class="s7 rv">
         <p class="kicker">Олимпийская арена</p>
         <div class="peak-num" data-count="1500">1 500</div>
-        ${stripe}
         <p class="peak-lead">зрителей на трибунах. Здесь проходят турниры по хоккею, фигурному катанию и шорт-треку, а в свободные от аренды часы открыто массовое катание.</p>
       </div>
       <div class="s5 rv"><div class="ph ar45">${photo('skating', 'Синхронное катание на арене комплекса', { pos: '60% 50%' })}</div></div>
