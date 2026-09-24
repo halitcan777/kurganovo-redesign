@@ -188,18 +188,17 @@ h3{font-size:22px;line-height:1.2;font-weight:600}
 .map-preview{position:relative;display:block;padding:14px;border:1px solid var(--line);border-radius:var(--r3);background:#fff}
 .map-preview .btn{position:absolute;right:36px;bottom:36px}
 .tmap-svg{display:block;width:100%;height:auto;font-family:var(--f-body)}
-.map-roads path{fill:none;stroke:#fff;stroke-width:76;stroke-linecap:round;stroke-linejoin:round}
-.map-roads path:nth-child(2),.map-roads path:nth-child(3){stroke-width:56}
-.map-parking{stroke:rgba(0,54,49,.3);stroke-width:3}
-.map-buildings path{fill:#fff;stroke:#003631;stroke-width:5;stroke-linejoin:round;filter:drop-shadow(0 10px 6px rgba(0,54,49,.14))}
-.map-buildings .admin{fill:#f0f0f0}
-.map-buildings text{fill:rgba(0,54,49,.6);font-size:13px;font-weight:750;letter-spacing:.08em;text-anchor:middle;pointer-events:none}
-.map-fields rect{fill:rgba(0,54,49,.3);stroke:#003631;stroke-width:4}
-.map-fields path{fill:none;stroke:#fff;stroke-width:3;opacity:.8}
-.map-small rect,.map-small path{fill:#f0f0f0;stroke:#003631;stroke-width:3}
+.map-roads path{fill:none;stroke:#fff;stroke-width:36;stroke-linecap:butt;stroke-linejoin:round}
+.map-parking{stroke:rgba(0,54,49,.25);stroke-width:2}
+.map-buildings path{fill:none;stroke:#003631;stroke-width:2;stroke-opacity:.35}
+.map-buildings rect{fill:#fff;stroke:#003631;stroke-width:3}.map-buildings .admin{fill:#e9eceb;stroke-width:2}
+.map-buildings text{fill:rgba(0,54,49,.6);font-size:13px;font-weight:700;letter-spacing:.1em;text-anchor:middle;pointer-events:none}
+.map-fields rect{fill:rgba(0,54,49,.12);stroke:#003631;stroke-width:2}
+.map-fields path{fill:none;stroke:#fff;stroke-width:3}
+.map-small rect,.map-small path,.map-small circle{fill:#fff;stroke:#003631;stroke-width:2;stroke-linejoin:round}
 .map-pin{cursor:pointer;transition:opacity .2s ease,transform .2s ease}
-.map-pin circle{fill:#fff;stroke:#003631;stroke-width:4;filter:drop-shadow(0 4px 5px rgba(0,54,49,.22));transition:fill .2s ease,stroke .2s ease}
-.map-pin text{fill:#003631;font-size:18px;font-weight:750;text-anchor:middle;dominant-baseline:middle;pointer-events:none}
+.map-pin circle{fill:#fff;stroke:#003631;stroke-width:3;transition:fill .2s ease,stroke .2s ease}
+.map-pin text{fill:#003631;font-size:15px;font-weight:750;text-anchor:middle;dominant-baseline:middle;pointer-events:none}
 .map-pin:hover circle,.map-pin:focus circle,.map-pin.active circle{fill:var(--accent);stroke:var(--navy)}
 .map-pin.dim{opacity:.16;pointer-events:none}
 .map-page{padding-top:48px}

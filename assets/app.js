@@ -138,7 +138,7 @@
     let zoom = 1;
     const drawRoute = pin => {
       const x = Number(pin.dataset.x), y = Number(pin.dataset.y);
-      route.setAttribute('d', `M225 520 C270 475 330 435 390 405 C470 365 525 355 590 350 C${Math.round((590+x)/2)} ${Math.round((350+y)/2)} ${x} ${y} ${x} ${y}`);
+      route.setAttribute('d', y > 440 && x < 320 ? `M320 680V440H${x}V${y}` : `M320 680V440H${x === 320 ? 321 : x}V${y}`);
     };
     const select = n => {
       const pin = pins.find(x => x.dataset.n === String(n));
