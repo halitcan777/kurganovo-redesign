@@ -15,7 +15,7 @@
 :root{
   --brand:#003631; --brand-dk:#00241f; --brand-tint:rgba(0,0,0,.05);
   --navy:#003631; --navy2:#003631; --soft:rgba(0,0,0,.04); --cream:#ffeda8;
-  --ink:#003631; --ink2:rgba(0,54,49,.8); --ink3:rgba(0,54,49,.62); --ink4:rgba(0,54,49,.42); --ink-inv:rgba(255,255,255,.75);
+  --ink:#003631; --ink2:rgba(0,54,49,.8); --ink3:rgba(0,54,49,.7); --ink4:rgba(0,54,49,.42); --ink-inv:rgba(255,255,255,.75);
   --line:rgba(0,0,0,.1); --line-inv:rgba(255,255,255,.16); --bg:#fff; --bg2:rgba(0,0,0,.04);
   --accent:var(--cream);
   --r1:4px; --r2:8px; --r3:12px;

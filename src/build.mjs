@@ -54,12 +54,13 @@ const head = ({ title, desc, file }) => `<!doctype html>
 <meta property="og:description" content="${esc(desc)}">
 <meta property="og:image" content="${BASE}assets/img/og.jpg">
 <meta name="theme-color" content="#003631">
+<link rel="icon" href="data:,">
 <link rel="preload" href="assets/fonts/onest-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/site.css?v=${V}">
 <script>document.documentElement.classList.add('js');if(/[?&]still/.test(location.search))document.documentElement.classList.add('still')</script>
 </head>`;
 
-const wordmark = () => `<a class="wordmark" href="index.html" aria-label="Курганово, на главную"><small>спортивный комплекс</small><b>Курганово</b></a>`;
+const wordmark = () => `<a class="wordmark" href="index.html"><small>спортивный комплекс</small><b>Курганово</b></a>`;
 
 const header = file => `<div class="progress" aria-hidden="true"></div>
 <header class="hdr">
@@ -277,7 +278,7 @@ page('index.html', {
     <div class="s5 rv">
       <p class="kicker">Отзывы гостей</p>
       <div class="rate-num">${site.rating.value}</div>
-      <div class="stars" aria-label="Пять звёзд из пяти">${ic('star').repeat(5)}</div>
+      <div class="stars" role="img" aria-label="Пять звёзд из пяти">${ic('star').repeat(5)}</div>
       <p class="rate-lead">${site.rating.ratings} оценок и ${site.rating.reviews} отзыва на Яндекс Картах. Комплекс получил знак «${site.rating.award}».</p>
       <p>Чаще всего гости отмечают персонал, чистоту и расположение.</p>
       <a class="btn btn-tint" href="${site.rating.url}" target="_blank" rel="noopener">${ic('star')}Читать отзывы на Яндекс Картах</a>
@@ -303,7 +304,7 @@ ${planBlock()}
 <section class="clients">
   <div class="wrap clients-in">
     <p class="clients-k">Клиенты<br>и партнёры</p>
-    <div class="marquee" aria-label="Клиенты: ${esc(clients.join(', '))}"><div class="marquee-track" aria-hidden="true">${[...clients, ...clients].map(c => `<span>${esc(c)}</span>`).join('')}</div></div>
+    <div class="marquee" role="region" aria-label="Клиенты: ${esc(clients.join(', '))}"><div class="marquee-track" aria-hidden="true">${[...clients, ...clients].map(c => `<span>${esc(c)}</span>`).join('')}</div></div>
   </div>
 </section>
 
@@ -401,7 +402,7 @@ page('sport.html', {
 <section class="sec dark" id="sbory">
   <div class="wrap">
     <div class="sec-head rv"><p class="kicker">Сборы под ключ</p><h2>Жильё, питание, лёд и залы на одной территории</h2><p>Команде не нужно никуда ездить между тренировкой, столовой и номером. Территория охраняется.</p></div>
-    <ul class="sb-facts rv"><li><b>до 380</b><span>мест для размещения команд</span></li><li><b>15 км</b><span>от границы Екатеринбурга, рядом Кольцово</span></li><li><b>2 арены</b><span>и залы на 530 и 272 м²</span></li><li><b>Госреестр</b><span>площадки внесены в реестр объектов спорта</span></li></ul>
+    <ul class="sb-facts rv"><li><b>до 380</b><span>мест для размещения команд</span></li><li><b>30-й км</b><span>Полевского тракта, рядом аэропорт Кольцово</span></li><li><b>2 арены</b><span>и залы на 530 и 272 м²</span></li><li><b>Госреестр</b><span>площадки внесены в реестр объектов спорта</span></li></ul>
     <div class="feats rv">${feats.map(([i, t, p]) => `<div class="feat">${ic(i)}<h3>${t}</h3><p>${p}</p></div>`).join('')}</div>
     <div class="g sb-g">
       <div class="s5 rv">

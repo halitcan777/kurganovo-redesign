@@ -195,7 +195,7 @@
   // Просмотр фото на весь экран: фото внутри контента (не ссылки-плитки, не шапки)
   const zs = [...d.querySelectorAll('main .ph img')].filter(i => !i.closest('a'));
   if (zs.length) {
-    const lb = d.createElement('div'); lb.className = 'lb'; lb.setAttribute('role', 'dialog'); lb.setAttribute('aria-modal', 'true');
+    const lb = d.createElement('div'); lb.className = 'lb'; lb.setAttribute('role', 'dialog'); lb.setAttribute('aria-modal', 'true'); lb.setAttribute('aria-label', 'Просмотр фото');
     lb.innerHTML = '<figure style="margin:0;display:contents"><img alt=""><figcaption></figcaption></figure><button class="lb-x" aria-label="Закрыть">×</button><button class="lb-p" aria-label="Предыдущее фото">‹</button><button class="lb-n" aria-label="Следующее фото">›</button>';
     d.body.appendChild(lb);
     const im = lb.querySelector('img'), cap = lb.querySelector('figcaption');
