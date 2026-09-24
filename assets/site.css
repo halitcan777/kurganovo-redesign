@@ -14,10 +14,10 @@
 
 :root{
   --brand:#2a8a52; --brand-dk:#1f6e40; --brand-tint:#e8f5ec;
-  --navy:#3a7d3b; --navy2:#468c47;
+  --navy:#2d5a3c; --navy2:#3a6b49; --soft:#e3eedc;
   --ink:#18211c; --ink2:#3f4c45; --ink3:#6c7870; --ink4:#9ca69f; --ink-inv:#cddbd2;
   --line:#dfe7e1; --line-inv:rgba(255,255,255,.16); --bg:#fff; --bg2:#f3f2ed;
-  --accent:#d6f5c8;
+  --accent:#a8e2bc;
   --r1:4px; --r2:8px; --r3:12px;
   --gut:24px; --maxw:1280px; --hdr:72px;
   --f-head:'Onest',system-ui,sans-serif;
@@ -178,7 +178,7 @@ h3{font-size:22px;line-height:1.2;font-weight:600}
 .rating{align-items:center}
 .rate-num{font:700 132px/.9 var(--f-head);color:var(--brand);letter-spacing:-.02em}
 .stars{display:flex;gap:4px;margin-top:16px}
-.stars .ic{width:26px;height:26px;fill:var(--accent);stroke:var(--accent)}
+.stars .ic{width:26px;height:26px;fill:var(--brand);stroke:var(--brand)}
 .rate-lead{margin-top:20px;font-size:20px;line-height:1.45}
 .rating p + p{margin-top:12px;color:var(--ink2)}
 .rating .btn{margin-top:28px}
@@ -262,7 +262,7 @@ h3{font-size:22px;line-height:1.2;font-weight:600}
 .toast.on{opacity:1;transform:translate(-50%,0)}
 
 /* подвал */
-.ftr{background:#183d2b;color:var(--ink-inv);padding-block:0 28px;font-size:15px}
+.ftr{--ink-inv:#b9c0bb;--line-inv:rgba(255,255,255,.12);background:#1c201e;color:var(--ink-inv);padding-block:0 28px;font-size:15px}
 .ftr-top{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(280px,.65fr);gap:32px;align-items:center;padding-block:38px;border-bottom:1px solid var(--line-inv)}
 .ftr-top h2{max-width:700px;color:#fff;font-size:clamp(28px,3vw,42px)}
 .ftr-top p{margin-top:8px;max-width:640px}
@@ -270,7 +270,7 @@ h3{font-size:22px;line-height:1.2;font-weight:600}
 .ftr-call a{display:block;color:#fff;font:700 clamp(28px,3.2vw,42px)/1 var(--f-head);font-variant-numeric:tabular-nums}
 .ftr-call span{display:block;margin-top:7px;font-size:13px}
 .ftr-main{display:grid;grid-template-columns:1.35fr .7fr 1.15fr .8fr;gap:40px;padding-block:48px 8px}
-.ftr .wordmark{width:max-content;padding:9px 12px;border-radius:8px;background:#fff}
+.ftr .wordmark{width:max-content}.ftr .wordmark small{color:var(--ink-inv)}.ftr .wordmark b{margin:0;color:#fff;font:750 25px/1 var(--f-head)}
 .ftr b{display:block;margin-bottom:14px;color:#fff;font-weight:600}
 .ftr-col a{display:block;padding-block:4px}
 .ftr-col a:hover{color:#fff}
@@ -494,3 +494,13 @@ h3{font-size:22px;line-height:1.2;font-weight:600}
 .still *,.still *::before,.still *::after{animation:none!important;transition:none!important}
 .still .rv{opacity:1!important;transform:none!important}
 .still .lad-bar i{transform:none!important}
+
+/* Пастельные блоки: арена, «тёмные» секции, заявка, карточка карты, топ-строка лесенки */
+.peak,.dark,.cta,.map-detail,.ladder li.lad-top{--ink-inv:var(--ink2);--line-inv:rgba(20,50,34,.14);--accent:var(--brand);background:var(--soft);color:var(--ink)}
+.peak-lead,.cta-list,.map-detail-features li{color:var(--ink2)}
+.cta-phone{border-bottom-color:rgba(42,138,82,.4)}
+.map-detail-num{color:rgba(20,50,34,.06)}
+.map-detail .map-detail-meta{color:var(--ink)!important}
+.lad-top .lad-num{color:var(--ink)}
+.lad-top .lad-bar{background:rgba(20,50,34,.1)}
+:is(.peak,.dark,.cta,.map-detail) .btn-accent{color:#fff} :is(.peak,.dark,.cta,.map-detail) .btn-accent:hover{background:var(--brand-dk);color:#fff}
