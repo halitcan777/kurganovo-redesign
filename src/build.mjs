@@ -236,7 +236,6 @@ page('index.html', {
         <a class="hero-link" href="prozhivanie.html">Посмотреть варианты</a>
       </div>
     </div>
-    <a class="hero-where" href="kontakty.html"><span class="hero-where-k">${ic('map-pin')}Где мы</span><b>30-й км Полевского тракта</b><span>Берег Верхне-Макаровского водохранилища</span><span class="hero-where-l">Маршрут и телефоны</span></a>
   </div>
 </section>
 

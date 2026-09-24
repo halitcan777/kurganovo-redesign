@@ -510,16 +510,6 @@ h3{font-size:22px;line-height:1.2;font-weight:600}
 .hero h1,.phero h1,.hero-lead,.hero .kicker,.phero .kicker,.crumbs{text-shadow:0 1px 16px rgba(0,30,27,.35)}
 .lhero .hero-lead,.lhero .crumbs{text-shadow:none}
 
-/* Где мы — карточка в первом экране */
-.hero .wrap{display:flex;align-items:flex-end;justify-content:space-between;gap:32px}
-.hero-where{flex:0 0 280px;display:grid;gap:4px;padding:20px;border-radius:var(--r3);background:#fff;color:var(--ink);font-size:14px;line-height:1.4;transition:background-color .2s ease}
-.hero-where:hover{background:var(--cream)}
-.hero-where-k{display:flex;align-items:center;gap:6px;margin-bottom:4px;color:var(--ink3);font-size:13px;font-weight:600}
-.hero-where-k .ic{width:16px;height:16px}
-.hero-where b{font-size:16px}
-.hero-where span:not(.hero-where-k){color:var(--ink2)}
-.hero-where .hero-where-l{margin-top:10px;color:var(--ink);font-weight:600;text-decoration:underline;text-underline-offset:3px;text-decoration-color:rgba(0,54,49,.3)}
-@media(max-width:900px){.hero-where{display:none}}
 /* Частые вопросы */
 .faq-g{align-items:start}
 .faq{border-top:1px solid var(--line)}
