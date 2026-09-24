@@ -232,6 +232,7 @@ page('index.html', {
         <a class="hero-link" href="prozhivanie.html">Посмотреть варианты</a>
       </div>
     </div>
+    <a class="hero-where" href="kontakty.html"><span class="hero-where-k">${ic('map-pin')}Где мы</span><b>30-й км Полевского тракта</b><span>Берег Верхне-Макаровского водохранилища</span><span class="hero-where-l">Маршрут и телефоны</span></a>
   </div>
 </section>
 
@@ -288,6 +289,13 @@ page('index.html', {
 </section>
 
 ${planBlock()}
+
+<section class="sec">
+  <div class="wrap g faq-g">
+    <div class="s4 sec-head rv"><h2>Частые вопросы</h2><p>Если ответа нет, позвоните администратору: он на связи круглосуточно.</p></div>
+    <div class="s8 faq rv"><details class="faq-item" open><summary>Как забронировать номер, баню или лёд?${ic('chevron-down')}</summary><p>Номера, коттеджи и бани бронирует администратор гостиницы по телефону <a class="link" href="tel:+73432829010">282-90-10</a>, круглосуточно. Лёд и массовые катания: <a class="link" href="tel:+73432829011">282-90-11</a>. Мероприятия и сборы: отдел продаж, <a class="link" href="tel:+73432829004">282-90-04</a>.</p></details><details class="faq-item"><summary>Можно приехать с собакой?${ic('chevron-down')}</summary><p>Да, проживание с питомцем стоит 1 500 ₽ в сутки. Цена из прайса корпусов «Азия» и Главного, действовавшего до 31 августа 2026 года.</p></details><details class="faq-item"><summary>Где поесть?${ic('chevron-down')}</summary><p>В корпусе «Азия» работает столовая с комплексным питанием, в главном корпусе спорт-бар, на территории гриль-бар «Овертайм» (бронь столов <a class="link" href="tel:+73432829006">282-90-06</a>). Горячее из гриль-бара можно заказать прямо в баню.</p></details><details class="faq-item"><summary>Есть ли парковка?${ic('chevron-down')}</summary><p>Да, охраняемая, в том числе для автобусов. Стоимость стоянки уточняйте у администратора.</p></details><details class="faq-item"><summary>Как добраться без машины?${ic('chevron-down')}</summary><p>Рейсовым автобусом от Южного автовокзала Екатеринбурга (ул. 8 Марта, 145) до села Курганово. На машине: по Полевскому тракту до 30-го километра, дальше по указателям.</p></details><details class="faq-item"><summary>Цены на сайте актуальны?${ic('chevron-down')}</summary><p>Прайсы действовали с 1 февраля по 31 августа 2026 года. Новые цены назовёт администратор: <a class="link" href="tel:+73432829010">282-90-10</a>.</p></details></div>
+  </div>
+</section>
 
 <section class="sec-tight clients">
   <div class="wrap"><p class="kicker">Наши клиенты и партнёры</p></div>

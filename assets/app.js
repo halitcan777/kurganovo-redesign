@@ -191,4 +191,22 @@
     clearTimeout(tt);
     tt = setTimeout(() => toast.classList.remove('on'), 4200);
   }));
+
+  // Просмотр фото на весь экран: фото внутри контента (не ссылки-плитки, не шапки)
+  const zs = [...d.querySelectorAll('main .ph img')].filter(i => !i.closest('a'));
+  if (zs.length) {
+    const lb = d.createElement('div'); lb.className = 'lb'; lb.setAttribute('role', 'dialog'); lb.setAttribute('aria-modal', 'true');
+    lb.innerHTML = '<figure style="margin:0;display:contents"><img alt=""><figcaption></figcaption></figure><button class="lb-x" aria-label="Закрыть">×</button><button class="lb-p" aria-label="Предыдущее фото">‹</button><button class="lb-n" aria-label="Следующее фото">›</button>';
+    d.body.appendChild(lb);
+    const im = lb.querySelector('img'), cap = lb.querySelector('figcaption');
+    let k = 0;
+    const show = i => { k = (i + zs.length) % zs.length; im.src = zs[k].currentSrc || zs[k].src; im.alt = zs[k].alt; cap.textContent = zs[k].alt; };
+    const close = () => lb.classList.remove('on');
+    zs.forEach((z, i) => { z.classList.add('zoomable'); z.addEventListener('click', () => { show(i); lb.classList.add('on'); lb.querySelector('.lb-x').focus(); }); });
+    lb.querySelector('.lb-x').addEventListener('click', close);
+    lb.querySelector('.lb-p').addEventListener('click', e => { e.stopPropagation(); show(k - 1); });
+    lb.querySelector('.lb-n').addEventListener('click', e => { e.stopPropagation(); show(k + 1); });
+    lb.addEventListener('click', e => { if (e.target === lb) close(); });
+    d.addEventListener('keydown', e => { if (!lb.classList.contains('on')) return; if (e.key === 'Escape') close(); if (e.key === 'ArrowLeft') show(k - 1); if (e.key === 'ArrowRight') show(k + 1); });
+  }
 })();
