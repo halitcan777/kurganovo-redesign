@@ -226,7 +226,7 @@ page('index.html', {
     <div class="hero-panel">
       <p class="kicker">Спорт и отдых у воды</p>
       <h1>Место, где хочется остаться</h1>
-      <p class="hero-lead">Лёд, бассейн, гостиница и сосновый берег в одохранилища. Всё для сборов, выходных и больших событий в одном месте.</p>
+      <p class="hero-lead">Лёд, бассейн, гостиница и сосновый берег водохранилища. Всё для сборов, выходных и больших событий в одном месте.</p>
       <div class="hero-cta">
         <a class="btn btn-accent" href="${site.phoneHref}">${ic('phone')}Позвонить: ${site.phoneShort}</a>
         <a class="hero-link" href="prozhivanie.html">Посмотреть варианты</a>
